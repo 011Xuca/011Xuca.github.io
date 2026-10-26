@@ -169,6 +169,9 @@ a.proj:hover { border-color: var(--op); }
 .proj p { color: var(--muted); }
 .proj .tag { font: 600 .75rem var(--mono); color: var(--op); letter-spacing: .08em; text-transform: uppercase; }
 .proj.soon { border-style: dashed; background: transparent; }
+.proj-tit { display: flex; align-items: center; gap: 14px; }
+.proj-ic { width: 52px; height: 52px; flex: none; border-radius: 13px; }
+.hero-ic { display: block; width: 80px; height: 80px; border-radius: 20px; margin-bottom: 18px; filter: drop-shadow(0 0 18px rgba(34, 211, 238, .25)); }
 .proj.soon .tag { color: var(--muted); }
 
 
