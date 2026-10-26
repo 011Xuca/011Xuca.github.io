@@ -1,0 +1,457 @@
+/* Concepto: la ventana de la app como protagonista. Fondo grafito como la app, celeste del "OP" como acento,
+   y cada sección con el color que tiene en la barra de la app. */
+:root {
+  --bg: #14161B;
+  --bg-2: #0E1014;
+  --card: #1C2027;
+  --line: #2E3440;
+  --fg: #FFFFFF;
+  --muted: #9AA0A6;
+  --soft: #C3C8D0;
+  --sky: #8FD3F4;
+  --pink: #F9A8D4;
+  --op: #22D3EE;
+  --op-ink: #062A31;
+  --yellow: #E5B567;
+  --magenta: #E879F9;
+  --lime: #BEF264;
+  --orange: #F6AD55;
+  --green: #81C995;
+  --red: #F28B82;
+  --display: "Segoe UI Variable Display", "Segoe UI", "Figtree", system-ui, sans-serif;
+  --body: "Segoe UI Variable Text", "Segoe UI", "Figtree", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, "Cascadia Mono", monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F2F4F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D5D9E0; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E;
+    --sky: #0284C7; --pink: #DB2777;
+    --op: #0891B2; --op-ink: #FFFFFF; --yellow: #A16207; --magenta: #A21CAF; --lime: #4D7C0F; --orange: #C2410C;
+    --green: #15803D; --red: #B91C1C; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F2F4F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D5D9E0; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E;
+    --sky: #0284C7; --pink: #DB2777;
+    --op: #0891B2; --op-ink: #FFFFFF; --yellow: #A16207; --magenta: #A21CAF; --lime: #4D7C0F; --orange: #C2410C;
+    --green: #15803D; --red: #B91C1C; color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img { max-width: 100%; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.op { color: var(--op); font-weight: 800; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.02em; }
+h3 { font-size: 1.15rem; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--op); outline-offset: 3px; border-radius: 6px; }
+
+/* Barra de arriba */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+.brand svg { width: 28px; height: 28px; flex: none; }
+.links { display: flex; gap: 4px; margin-left: auto; }
+.links a { text-decoration: none; color: var(--muted); padding: 6px 10px; border-radius: 8px; font-size: .95rem; }
+.links a:hover { color: var(--fg); background: var(--card); }
+.icon-btn {
+  display: grid; place-items: center; width: 38px; height: 38px; flex: none;
+  border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer;
+}
+.icon-btn svg { width: 18px; height: 18px; }
+@media (max-width: 720px) { .links { display: none; } .top .icon-btn:first-of-type { margin-left: auto; } }
+
+/* Botones (como los de la app: redondeados, se agrandan un poco) */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700;
+  padding: 12px 20px; border-radius: 12px; border: 1px solid var(--line); background: var(--card);
+  transition: transform .15s ease, background .15s ease; cursor: pointer; font-size: 1rem; font-family: var(--body); color: var(--fg);
+}
+.btn:hover { transform: scale(1.03); }
+.btn svg { width: 18px; height: 18px; }
+.btn.main { background: var(--op); color: var(--op-ink); border-color: var(--op); }
+.btn.kofi { background: #29ABE0; border-color: #29ABE0; color: #fff; }
+
+/* Portada */
+.hero { padding-block: 96px 72px; position: relative; overflow: hidden; }
+.hero .wrap { position: relative; display: grid; gap: 28px; justify-items: center; text-align: center; }
+.hero h1 { font-size: clamp(2.4rem, 7vw, 4.6rem); letter-spacing: -0.035em; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--op); }
+.hero .lead { color: var(--muted); font-size: 1.15rem; max-width: 56ch; }
+.ctas { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+
+/* Secciones */
+section { padding-block: 64px; }
+.head { display: grid; gap: 10px; margin-bottom: 32px; max-width: 62ch; }
+.head p { color: var(--muted); font-size: 1.05rem; }
+.eyebrow { font: 600 .78rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--op); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px; }
+.feat {
+  --c: var(--op);
+  display: grid; gap: 8px; align-content: start; padding: 20px; border-radius: 16px;
+  background: var(--card); border: 1px solid var(--line); transition: border-color .2s, transform .2s;
+}
+.feat:hover { border-color: var(--c); }
+.feat .ic { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+.feat .ic svg { width: 22px; height: 22px; }
+.feat p { color: var(--muted); font-size: .95rem; }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; counter-reset: paso; }
+.step { counter-increment: paso; padding: 20px; border-top: 2px solid var(--op); background: var(--card); border-radius: 0 0 14px 14px; display: grid; gap: 6px; }
+.step::before { content: counter(paso); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; font: 800 1.1rem var(--display); color: var(--op-ink); background: linear-gradient(135deg, var(--op), var(--pink)); margin-bottom: 6px; transition: transform .35s cubic-bezier(.34,1.56,.64,1); }
+.step:hover::before { transform: rotate(-8deg) scale(1.12); }
+.step p { color: var(--muted); font-size: .95rem; }
+
+/* Leyenda de bordes */
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; }
+.leg { padding: 16px 18px; border-radius: 14px; background: var(--card); border: 2px solid var(--c); display: grid; gap: 4px; }
+.leg b { color: var(--c); }
+.leg p { color: var(--muted); font-size: .92rem; }
+
+/* Instalar */
+.install { background: var(--bg-2); border-block: 1px solid var(--line); }
+.cmd {
+  display: flex; align-items: center; gap: 12px; padding: 14px 14px 14px 18px; border-radius: 14px;
+  background: #0A0C10; border: 1px solid var(--line); color: #E8ECF2; margin-block: 8px 48px;
+}
+.cmd code { font: 500 .92rem/1.5 var(--mono); overflow-x: auto; white-space: nowrap; flex: 1; min-width: 0; padding-block: 4px; }
+.cmd::before { content: "PS>"; flex: none; font: 600 .92rem/1.5 var(--mono); color: #22D3EE; text-shadow: 0 0 10px rgba(34,211,238,.7); }
+.copy { flex: none; display: inline-flex; gap: 6px; align-items: center; font: 600 .85rem var(--body); padding: 8px 12px; border-radius: 9px; border: 1px solid #2A303C; background: #1A1D24; color: #E8ECF2; cursor: pointer; }
+.copy.ok { color: #4ADE80; border-color: #4ADE80; }
+.copy svg { width: 16px; height: 16px; }
+.how { display: grid; gap: 8px; color: var(--muted); max-width: 70ch; }
+.how code { font-family: var(--mono); font-size: .88em; color: var(--fg); background: var(--card); padding: 1px 6px; border-radius: 6px; border: 1px solid var(--line); }
+.ctas.left { justify-content: flex-start; margin-top: 20px; }
+
+/* Configs */
+.cfgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 14px; }
+.cfg { --c: var(--orange); display: grid; gap: 6px; padding: 18px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); text-decoration: none; transition: border-color .2s; }
+.cfg:hover { border-color: var(--c); }
+.cfg b { font-family: var(--display); color: var(--c); }
+.cfg p { color: var(--muted); font-size: .9rem; }
+.cfg-empty { color: var(--muted); }
+
+/* Apoyar */
+.support { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; padding: 28px; border-radius: 18px; border: 1px solid var(--line); background: var(--card); }
+.support p { color: var(--muted); max-width: 52ch; margin-top: 6px; }
+
+/* Pie */
+footer { border-top: 1px solid var(--line); padding-block: 36px; color: var(--muted); font-size: .9rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--fg); }
+
+/* Inicio del sitio (lista de proyectos) */
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.proj { display: grid; gap: 10px; padding: 24px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); text-decoration: none; transition: border-color .2s, transform .2s; }
+a.proj:hover { border-color: var(--op); }
+.proj p { color: var(--muted); }
+.proj .tag { font: 600 .75rem var(--mono); color: var(--op); letter-spacing: .08em; text-transform: uppercase; }
+.proj.soon { border-style: dashed; background: transparent; }
+.proj.soon .tag { color: var(--muted); }
+
+
+
+/* Borde degradado celeste a rosa, como los carteles de la app */
+.grad { border: 1.5px solid transparent !important;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(135deg, var(--sky), var(--pink)) border-box !important; }
+.grad.on-card { background: linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(135deg, var(--sky), var(--pink)) border-box !important; }
+.grad.on-dark { background: linear-gradient(#0A0C10, #0A0C10) padding-box, linear-gradient(135deg, var(--sky), var(--pink)) border-box !important; }
+.lang { font: 700 .8rem var(--body); width: auto; padding-inline: 10px; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ===== Diseño extra ===== */
+/* Fondo de la portada: grilla tenue y luces de colores que flotan */
+.fondo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; mask-image: linear-gradient(#000 55%, transparent); -webkit-mask-image: linear-gradient(#000 55%, transparent); }
+.fondo::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px; opacity: .45;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+}
+.fondo i { position: absolute; width: 420px; height: 420px; border-radius: 50%; filter: blur(90px); opacity: .28; animation: flotar 16s ease-in-out infinite alternate; }
+.fondo i:nth-child(1) { background: var(--op); left: 8%; top: -120px; }
+.fondo i:nth-child(2) { background: var(--pink); right: 6%; top: 40px; animation-delay: -5s; animation-duration: 19s; }
+.fondo i:nth-child(3) { background: #C58AF9; left: 40%; top: 220px; width: 320px; height: 320px; opacity: .18; animation-delay: -9s; }
+@keyframes flotar { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(40px, 30px) scale(1.12); } 100% { transform: translate(-30px, 10px) scale(.95); } }
+.hero .wrap { z-index: 1; }
+
+/* Título con degradado celeste a rosa que se mueve despacio */
+.hero h1 em {
+  background: linear-gradient(90deg, var(--op), var(--sky), var(--pink), var(--op)); background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; animation: brillo 8s linear infinite;
+}
+@keyframes brillo { to { background-position: 300% 0; } }
+
+/* Pastillas de secciones con su color, como la barra de la app */
+.pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 640px; }
+.pills span {
+  --c: var(--op); font-size: .85rem; font-weight: 700; padding: 6px 14px; border-radius: 999px;
+  color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  background: color-mix(in srgb, var(--c) 10%, var(--bg)); transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .2s;
+}
+.pills span:hover { transform: scale(1.14); background: color-mix(in srgb, var(--c) 22%, var(--bg)); }
+
+/* Títulos de sección con rayita de color */
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 18px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--op), var(--pink)); }
+
+/* Tarjetas: se agrandan un poco (como en la app) y el ícono rebota */
+.feat, .leg, .step, .cfg, .proj { transition: transform .3s cubic-bezier(.34,1.56,.64,1), border-color .2s, box-shadow .3s; }
+.feat:hover, .cfg:hover, a.proj:hover { transform: scale(1.04); box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--c, var(--op)) 70%, transparent); }
+.leg:hover, .step:hover { transform: scale(1.04); }
+.feat .ic { transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+.feat:hover .ic { transform: rotate(-10deg) scale(1.15); }
+.feat .ic { box-shadow: 0 0 0 0 transparent; }
+.feat:hover .ic { box-shadow: 0 0 22px -4px var(--c); }
+
+/* Barra de arriba: sombra al bajar */
+.top { transition: box-shadow .3s, background .3s; }
+.top.bajo { box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
+
+/* Botones: onda blanca al tocar, como en la app */
+.btn, .copy, .icon-btn { position: relative; overflow: hidden; transition: transform .2s cubic-bezier(.34,1.56,.64,1), background .2s, border-color .2s; }
+.btn:hover, .icon-btn:hover { transform: scale(1.06); }
+.btn:active, .icon-btn:active, .copy:active { transform: scale(.96); }
+.onda { position: absolute; border-radius: 50%; background: rgba(255,255,255,.45); transform: scale(0); animation: onda .6s ease-out forwards; pointer-events: none; }
+@keyframes onda { to { transform: scale(1); opacity: 0; } }
+.icon-btn svg { transition: transform .5s cubic-bezier(.34,1.56,.64,1); }
+#btn-tema:hover svg { transform: rotate(40deg); }
+
+/* Copiar: el tilde se dibuja */
+.copy .tilde { display: none; }
+.copy.ok .tilde { display: block; }
+.copy.ok .hoja { display: none; }
+.copy.ok .tilde path { stroke-dasharray: 24; animation: dibujar .4s ease-out; }
+@keyframes dibujar { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+.copy.ok .tilde { animation: crecer .4s cubic-bezier(.34,1.56,.64,1); }
+
+/* Aparecer al bajar (Desplegar de la app): crece con rebote */
+.js-anim .rev { opacity: 0; transform: translateY(-22px) scale(.97); }
+.js-anim .rev.ver { opacity: 1; transform: none; transition: opacity .5s ease, transform .6s cubic-bezier(.34,1.56,.64,1); transition-delay: var(--d, 0s); }
+
+/* La barra baja desde arriba al abrir */
+.js-anim .top { animation: bajar .6s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes bajar { from { transform: translateY(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Cambio de tema con círculo que se expande desde el botón */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+/* Cambio de idioma: el texto parpadea suave */
+.cambia [data-en] { animation: texto .35s ease; }
+@keyframes texto { from { opacity: 0; filter: blur(3px); } to { opacity: 1; filter: none; } }
+
+
+
+/* ===== Más animaciones ===== */
+@property --giro { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+
+/* Barra de progreso arriba, celeste a rosa */
+.progreso { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; z-index: 6; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--op), var(--sky), var(--pink)); pointer-events: none; }
+
+/* Links de arriba: rayita que se desliza */
+.links a { position: relative; }
+.links a::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--op), var(--pink)); transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.65,0,.35,1); }
+.links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Palabras de los títulos: caen de a una */
+.pal { display: inline-block; white-space: pre; }
+.js-anim .rev .pal { opacity: 0; transform: translateY(-.6em) rotate(-4deg); filter: blur(6px); }
+.js-anim .rev.ver .pal { opacity: 1; transform: none; filter: none; transition: opacity .5s ease, transform .7s cubic-bezier(.34,1.56,.64,1), filter .5s ease; transition-delay: calc(var(--d, 0s) + var(--i) * 55ms); }
+.hero h1 em .pal { background: inherit; -webkit-background-clip: text; background-clip: text; }
+
+/* La rayita de los títulos crece */
+.js-anim .head.rev .eyebrow::before { width: 0; transition: width .6s cubic-bezier(.34,1.56,.64,1) .2s; }
+.js-anim .head.rev.ver .eyebrow::before { width: 18px; }
+
+/* Borde degradado que gira (carteles) */
+.grad { background: linear-gradient(var(--bg), var(--bg)) padding-box, conic-gradient(from var(--giro), var(--sky), var(--pink), var(--op), var(--sky)) border-box !important; animation: girar 6s linear infinite; }
+.grad.on-card { background: linear-gradient(var(--card), var(--card)) padding-box, conic-gradient(from var(--giro), var(--sky), var(--pink), var(--op), var(--sky)) border-box !important; }
+.grad.on-dark { background: linear-gradient(#0A0C10, #0A0C10) padding-box, conic-gradient(from var(--giro), var(--sky), var(--pink), var(--op), var(--sky)) border-box !important; }
+@keyframes girar { to { --giro: 360deg; } }
+
+/* Luz que sigue al mouse dentro de las tarjetas */
+.feat, .leg, .step, .cfg, .proj, .support { position: relative; isolation: isolate; }
+/* Inclinación 3D al pasar el mouse */
+.incl { transform-style: preserve-3d; will-change: transform; }
+
+/* Pastillas: flotan sin parar, cada una a su ritmo */
+
+
+/* Íconos de las tarjetas: flotan suave */
+
+/* Botón principal: brillo que cruza */
+.btn.main::before, .btn.kofi::before, .btn.discord::before {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent); transform: skewX(-20deg);
+  animation: cruzar 3.5s ease-in-out infinite;
+}
+@keyframes cruzar { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+.btn.main svg { transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+
+/* Leyenda: casillas como las de la app */
+.leg-top { display: flex; align-items: center; gap: 10px; }
+.leg-ic { margin-left: auto; color: var(--c); display: grid; }
+.leg-ic svg { width: 22px; height: 22px; }
+.caja { width: 20px; height: 20px; flex: none; border-radius: 6px; border: 2px solid var(--muted); display: grid; place-items: center; color: var(--op-ink); transition: background .25s, border-color .25s, transform .35s cubic-bezier(.34,1.56,.64,1); }
+.caja svg { width: 14px; height: 14px; }
+.caja path { stroke-dasharray: 22; stroke-dashoffset: 22; transition: stroke-dashoffset .35s ease .1s; }
+.leg:not(.bloq):hover .caja { background: var(--c); border-color: var(--c); transform: scale(1.15); }
+.leg:not(.bloq):hover .caja path { stroke-dashoffset: 0; }
+.leg { animation: latir 2.8s ease-in-out infinite; }
+.leg:nth-child(2) { animation-delay: -.9s; } .leg:nth-child(3) { animation-delay: -1.8s; }
+@keyframes latir { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 50% { box-shadow: 0 0 22px -6px var(--c); } }
+.leg:hover .leg-ic svg { animation: sacudir .5s ease; }
+.leg:nth-child(2):hover .leg-ic svg { animation: rebotar .6s cubic-bezier(.34,1.56,.64,1); }
+@keyframes sacudir { 0%, 100% { transform: none; } 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(5deg); } }
+@keyframes rebotar { 0%, 100% { transform: none; } 40% { transform: translateY(6px); } 70% { transform: translateY(-3px); } }
+.leg.bloq { background: color-mix(in srgb, var(--muted) 10%, var(--card)); }
+.leg.bloq p, .leg.bloq .caja { opacity: .5; }
+.leg.bloq:hover .caja { animation: no .4s ease; }
+@keyframes no { 0%, 100% { translate: 0; } 25% { translate: -4px; } 75% { translate: 4px; } }
+
+/* Pasos: línea que se dibuja de un paso al otro */
+.steps { position: relative; }
+.step { border-top: none; }
+.step > * { position: relative; }
+@property --linea { syntax: "<number>"; initial-value: 1; inherits: false; }
+.step { background: linear-gradient(90deg, var(--op), var(--pink)) top left / calc(var(--linea) * 100%) 2px no-repeat, var(--card); transition: --linea .8s cubic-bezier(.65,0,.35,1) calc(var(--d, 0s) + .2s), transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; }
+.js-anim .step.rev:not(.ver) { --linea: 0; }
+.step:hover { background-size: 100% 4px, auto; }
+
+/* Comando: se escribe solo */
+.cmd code.escribiendo::after { content: "▌"; color: var(--op); animation: titila .8s steps(1) infinite; }
+@keyframes titila { 50% { opacity: 0; } }
+
+/* Configs y tarjetas cargadas después también aparecen */
+.cfg.nueva { animation: aparecer .6s cubic-bezier(.34,1.56,.64,1) both; animation-delay: calc(var(--n, 0) * 70ms); }
+@keyframes aparecer { from { opacity: 0; transform: translateY(16px) scale(.92); } }
+
+
+
+.fondo i { translate: calc(var(--px, 0) * 50px) calc(var(--py, 0) * 50px); transition: translate 1.2s cubic-bezier(.22,1,.36,1); }
+.fondo i:nth-child(2) { translate: calc(var(--px, 0) * -70px) calc(var(--py, 0) * -40px); }
+
+/* Al pasar el mouse por una tarjeta, todo lo de adentro se mueve */
+.feat h3, .leg b, .step h3, .cfg b, .proj h3 { transition: color .3s, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.feat p, .leg p, .step p, .cfg p, .proj p { transition: color .3s, transform .45s cubic-bezier(.34,1.56,.64,1) .04s; }
+.feat:hover h3, .step:hover h3, .proj:hover h3 { color: var(--c, var(--op)); }
+.feat:hover p, .leg:not(.bloq):hover p, .step:hover p, .cfg:hover p, .proj:hover p { color: var(--soft); }
+.step { --c: var(--op); }
+.step:hover { box-shadow: 0 18px 40px -22px var(--op); }
+.leg:hover { animation: none; box-shadow: 0 18px 40px -20px var(--c); }
+.leg-ic { transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+.leg:hover .leg-ic { transform: scale(1.25); }
+
+/* Caja del comando: se agranda con rebote al pasar el mouse */
+.cmd { transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .4s; }
+.cmd:hover { transform: scale(1.035); box-shadow: 0 10px 30px -18px var(--op), 0 0 0 4px color-mix(in srgb, var(--op) 12%, transparent); }
+.cmd:hover::before { text-shadow: 0 0 12px #22D3EE, 0 0 4px #22D3EE; }
+/* La katana del logo hace un corte al pasar el mouse */
+.brand .katana { transition: transform .5s cubic-bezier(.34,1.56,.64,1); }
+.brand:hover .katana { transform: rotate(-20deg) scale(1.12); }
+
+/* Agrandado suave al pasar el mouse en todo (sin moverse de lugar, así no hace bucle en los bordes) */
+.btn, .icon-btn, .copy { transition: transform .45s cubic-bezier(.34,1.56,.64,1), background .25s, border-color .25s, box-shadow .3s; }
+.btn:hover { box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--op) 70%, transparent); }
+.copy:hover { transform: scale(1.08); border-color: #22D3EE; }
+.btn svg { flex: none; display: block; }
+.links a { transition: color .2s, background .2s, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.links a:hover { transform: scale(1.08); }
+.brand { transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+.brand:hover { transform: scale(1.05); }
+footer a { display: inline-block; transition: color .2s, transform .4s cubic-bezier(.34,1.56,.64,1); }
+footer a:hover { transform: scale(1.12); }
+.feat, .leg, .step, .cfg, .proj, .support, .cmd { transition: transform .5s cubic-bezier(.34,1.56,.64,1), border-color .25s, box-shadow .35s; }
+.support:hover { transform: scale(1.02); }
+
+/* Al tocar un link de la página, las tarjetas de la sección destino se iluminan (sin moverse) */
+.resalta .proj, .resalta .feat, .resalta .cfg, .resalta .step, .resalta .leg, .resalta .cmd { animation: resaltar 1.1s ease-in-out; }
+@keyframes resaltar { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 35% { box-shadow: 0 0 0 3px var(--op), 0 0 34px -6px var(--op); } }
+@keyframes crecer { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+
+/* Lo que se agranda queda en su propia capa: así la letra no "salta" ni se pone gruesa al terminar */
+.feat, .leg, .step, .cfg, .proj, .support, .cmd, .btn, .icon-btn, .copy, .pills span, .links a, footer a, .brand {
+  will-change: transform; backface-visibility: hidden; -webkit-font-smoothing: antialiased;
+}
+
+/* Cartelito de arriba: código abierto, estrellas y descargas */
+.insignia {
+  display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: .85rem; font-weight: 600;
+  color: var(--op); padding: 6px 14px; border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--op) 45%, transparent); background: color-mix(in srgb, var(--op) 10%, var(--bg));
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1), background .25s; will-change: transform;
+}
+.insignia:hover { transform: scale(1.06); background: color-mix(in srgb, var(--op) 18%, var(--bg)); }
+.insignia svg { width: 14px; height: 14px; }
+.insignia .sep { opacity: .6; }
+.insignia b { font-variant-numeric: tabular-nums; }
+.insignia .con-descargas { display: inline-flex; align-items: center; gap: 6px; }
+.insignia .con-descargas[hidden] { display: none; }
+.punto { width: 7px; height: 7px; border-radius: 50%; background: var(--op); box-shadow: 0 0 0 0 var(--op); animation: latido 2s ease-out infinite; }
+@keyframes latido { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--op) 60%, transparent); } 100% { box-shadow: 0 0 0 8px transparent; } }
+
+/* Botón de GitHub con estrellas (arriba) */
+.gh-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 4px 0 12px; border-radius: 10px; flex: none;
+  border: 1px solid var(--line); background: var(--card); color: var(--fg); text-decoration: none; font-size: .85rem; font-weight: 600;
+  transition: transform .45s cubic-bezier(.34,1.56,.64,1), border-color .25s; will-change: transform;
+}
+.gh-btn:hover { transform: scale(1.06); border-color: var(--op); }
+.gh-btn svg { width: 17px; height: 17px; }
+.gh-btn b { background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 3px 8px; font-variant-numeric: tabular-nums; }
+@media (max-width: 720px) { .gh-btn > span { display: none; } .top .gh-btn { margin-left: auto; } .top .icon-btn:first-of-type { margin-left: 0; } }
+
+/* Botón de Discord */
+.btn.discord svg { width: 20px; height: 20px; }
+.btn.discord { background: linear-gradient(135deg, #A78BFA, #C58AF9 45%, #F9A8D4); border-color: transparent; color: #1A1033; }
+.btn.discord:hover { box-shadow: 0 10px 28px -12px #C58AF9; }
+
+/* Pie con columnas */
+footer { background: var(--bg-2); padding-block: 48px 28px; }
+footer .wrap { display: block; }
+.pie { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.pie-col h4 { margin: 0 0 14px; font: 800 .8rem var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--fg); }
+.pie-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.pie-col a { color: var(--muted); }
+.pie-col a:hover { color: var(--op); }
+.pie-apoyo { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn.chico { padding: 8px 14px; font-size: .88rem; border-radius: 10px; }
+.btn.chico svg { width: 15px; height: 15px; }
+.pie-apoyo .btn { color: var(--fg); }
+.pie-apoyo .btn.kofi { color: #fff; }
+.pie-apoyo a.btn:hover { transform: scale(1.06); }
+.copy-linea { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; font-size: .85rem; color: var(--muted); text-align: center; }
+.katana-mini { width: 16px; height: 16px; flex: none; }
+@media (max-width: 480px) {
+  .top .wrap { gap: 8px; }
+  .brand { font-size: 1rem; gap: 8px; }
+  .brand svg { width: 24px; height: 24px; }
+  .gh-btn { padding-left: 8px; gap: 6px; }
+}
+
+/* El pie siempre queda abajo de todo, aunque la página sea corta o la pantalla muy alta */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+footer { flex-shrink: 0; }
