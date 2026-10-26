@@ -1,0 +1,6 @@
+# Configuracion del editor
+.vscode/
+
+# Archivos que crea Windows solo
+Thumbs.db
+desktop.ini
