@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Xuca Monitor</title>
-<meta name="description" content="App gratis para Windows que te dice por qué se corta tu internet, por qué sube el ping y qué USB se desconectó.">
+<meta name="description" content="App gratis para Windows que te dice por qué se corta internet, qué hace bajar tus FPS, qué USB se desconectó y por qué hubo un pantallazo azul.">
 <link rel="icon" href="../assets/xucamonitor.ico?v=1" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
@@ -43,8 +43,8 @@
         <span class="sep">·</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><b class="n-estrellas" data-repo="xuca-monitor">–</b><span data-en="stars">estrellas</span>
         <span class="con-descargas" data-releases="xuca-monitor"><span class="sep">·</span><b class="n-descargas">0</b><span data-en="downloads">descargas</span></span>
       </a>
-      <h1 data-en="Know <em>why</em> your internet drops.">Sabé <em>por qué</em> se corta tu internet.</h1>
-      <p class="lead" data-en="It lives in the tray, next to the clock. When the internet drops, ping goes up or a USB device disconnects, it tells you what it was and what to try. It weighs less than 100 KB and barely uses anything.">Vive en la bandeja, al lado del reloj. Cuando se corta internet, sube el ping o se desconecta un USB, te dice qué fue y qué probar. Pesa menos de 100 KB y casi no gasta nada.</p>
+      <h1 data-en="Know <em>what's</em> wrong with your PC.">Sabé <em>qué</em> le pasa a tu PC.</h1>
+      <p class="lead" data-en="It lives in the tray, next to the clock. When the internet drops, ping goes up, a USB device disconnects, your FPS drop, the screen goes black or there's a blue screen, it tells you what it was and what to try. It barely uses anything.">Vive en la bandeja, al lado del reloj. Cuando se corta internet, sube el ping, se desconecta un USB, bajan los FPS, la pantalla se pone negra o hay un pantallazo azul, te dice qué fue y qué probar. Casi no gasta nada.</p>
       <div class="ctas">
         <a class="btn main" href="https://github.com/011Xuca/xuca-monitor/releases/latest/download/XucaMonitor.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
@@ -57,7 +57,8 @@
       <div class="pills" aria-hidden="true">
         <span style="--c: var(--op)" data-en="Network">Red</span>
         <span style="--c: var(--green)">USB</span>
-        <span style="--c: var(--pink)">Lag</span>
+        <span style="--c: var(--orange)" data-en="Performance">Rendimiento</span>
+        <span style="--c: var(--red)" data-en="Errors">Errores</span>
         <span style="--c: var(--lime)" data-en="Lightweight">Liviana</span>
       </div>
     </div>
@@ -67,7 +68,7 @@
     <div class="wrap">
       <div class="head">
         <span class="eyebrow" data-en="Features">Qué hace</span>
-        <h2 data-en="Two monitors in one app">Dos monitores en una app</h2>
+        <h2 data-en="Four monitors in one app">Cuatro monitores en una app</h2>
         <p data-en="Each tab can be turned on or off. When it's off, it uses nothing.">Cada pestaña se prende o se apaga. Apagada no gasta nada.</p>
       </div>
       <div class="grid">
@@ -86,6 +87,16 @@
           <h3 data-en="USB disconnects">USB que se desconectan</h3>
           <p data-en="When you hear the Windows sound, it tells you which device it was (mouse, keyboard, headphones, monitor, Bluetooth...) and whether it came back by itself.">Cuando suena el ruido de Windows, te dice qué aparato fue (mouse, teclado, auriculares, monitor, Bluetooth...) y si volvió solo.</p>
         </div>
+        <div class="feat" style="--c: var(--orange)">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1 1 17.4 0"/></svg></span>
+          <h3 data-en="FPS drops">Bajones de FPS</h3>
+          <p data-en="While you play, it tells you what made the FPS drop: a background program, the CPU slowing down from heat, full RAM or the drive at 100%.">Mientras jugás, te dice qué hizo bajar los FPS: un programa de fondo, el procesador frenado por temperatura, la RAM llena o el disco al 100 %.</p>
+        </div>
+        <div class="feat" style="--c: var(--red)">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg></span>
+          <h3 data-en="Errors and blue screens">Errores y pantallazos</h3>
+          <p data-en="Black screen from the video driver, blue screens with the code explained, sudden shutdowns, hardware and drive errors, and games that close by themselves.">Pantalla negra por el driver de video, pantallazos azules con el código explicado, apagones, errores de hardware y del disco, y juegos que se cierran solos.</p>
+        </div>
         <div class="feat" style="--c: var(--sky)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg></span>
           <h3 data-en="Works with the optimizer">Junto al optimizador</h3>
@@ -94,7 +105,7 @@
         <div class="feat" style="--c: var(--lime)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
           <h3 data-en="Lightweight">Liviana</h3>
-          <p data-en="No install and no background PowerShell. The window only exists while it's open, and the USB monitor only wakes up when Windows says something changed.">Sin instalar y sin PowerShell de fondo. La ventana solo existe mientras está abierta, y el de USB solo se despierta cuando Windows avisa un cambio.</p>
+          <p data-en="No install. The window only exists while it's open, USB and Errors only wake up when Windows reports something, and Performance only measures while you play. It updates itself from GitHub.">Sin instalar. La ventana solo existe mientras está abierta, USB y Errores solo se despiertan cuando Windows avisa algo, y Rendimiento solo mide mientras jugás. Se actualiza sola desde GitHub.</p>
         </div>
         <div class="feat" style="--c: var(--orange)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>
@@ -114,7 +125,7 @@
       <div class="steps">
         <div class="step"><h3 data-en="Open it">Abrilo</h3><p data-en="No install. It stays in the tray, next to the clock.">No se instala. Queda en la bandeja, al lado del reloj.</p></div>
         <div class="step"><h3 data-en="Tick Start with Windows">Marcá Iniciar con Windows</h3><p data-en="That way it starts hidden every time you turn on the PC.">Así arranca escondida cada vez que prendés la PC.</p></div>
-        <div class="step"><h3 data-en="Check what happened">Mirá qué pasó</h3><p data-en="When something drops, open it from the tray and you'll see what it was and what to try.">Cuando algo se corte, abrila desde la bandeja y vas a ver qué fue y qué probar.</p></div>
+        <div class="step"><h3 data-en="Check what happened">Mirá qué pasó</h3><p data-en="When something happens, open it from the tray and you'll see what it was and what to try.">Cuando pase algo, abrila desde la bandeja y vas a ver qué fue y qué probar.</p></div>
       </div>
     </div>
   </section>
