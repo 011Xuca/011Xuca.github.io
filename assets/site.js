@@ -116,7 +116,17 @@
       .catch(function () { configs = 'error'; pintarConfigs(); est.forEach(function (el) { el.textContent = '★'; }); });
     // Descargas (se ve siempre, aunque sea 0): contador que suma install.ps1 cada vez que alguien instala (abacus, sin datos personales)
     var cd = document.querySelector('.con-descargas');
-    if (cd) {
+    if (cd && cd.dataset.releases) {
+      // Apps que se bajan como .exe: se suman las descargas de todos sus Releases de GitHub
+      fetch('https://api.github.com/repos/011Xuca/' + cd.dataset.releases + '/releases?per_page=100')
+        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (d) {
+          var n = 0;
+          d.forEach(function (rel) { (rel.assets || []).forEach(function (a) { n += a.download_count || 0; }); });
+          cd.querySelector('.n-descargas').textContent = corto(n);
+        })
+        .catch(function () {});
+    } else if (cd) {
       fetch('https://abacus.jasoncameron.dev/get/011xuca/xuca-optimizer-instalaciones')
         .then(function (r) { if (!r.ok) throw 0; return r.json(); })
         .then(function (d) {
