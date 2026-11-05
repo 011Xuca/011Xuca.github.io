@@ -15,22 +15,27 @@
   var bajos = 0, impulso = 0, temblor = 0, ultimoBeat = 0, nivel = 0, barras = new Float32Array(48);
   var fuerte = Math.min(innerWidth, innerHeight) > 600; // en celu el temblor y las barras son más suaves
   var pulsoPrev = '';
+  var lite = matchMedia('(hover: none)').matches, lento = 0, ult = 0; // lite = celu o equipo lento: menos efectos
   function crear(abajo) {
     var z = Math.random(); // 0 = lejos, 1 = cerca
     return { x: Math.random() * W, y: abajo ? H + 10 : Math.random() * H, z: z, r: 0.6 + z * 2.4, v: 6 + z * 26, a: 0.15 + z * 0.55, f: Math.random() * 6.28, s: 0.4 + Math.random() * 0.8, k: 0 };
   }
   function medir() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = lite ? 1 : Math.min(window.devicePixelRatio || 1, 2);
     W = root.clientWidth; H = root.clientHeight; // sin la barra de scroll
     cv.width = W * dpr; cv.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = Math.round(Math.min(fuerte ? 90 : 35, W * H / 14000)); // menos motas en pantallas chicas
+    var n = Math.round(Math.min(lite ? 24 : fuerte ? 90 : 35, W * H / 14000)); // menos motas en pantallas chicas
     while (motas.length < n) motas.push(crear(false));
     motas.length = n;
   }
   var t0 = 0;
   function frame(t) {
-    var dt = Math.min(0.05, (t - t0) / 1000 || 0); t0 = t;
+    if (lite && t - t0 < 30) { raf = requestAnimationFrame(frame); return; } // celu: 30 fps
+    var crudo = t - t0;
+    // Sin aceleracion por hardware o equipo lento: si el promedio pasa de 28 ms por cuadro, baja a modo lite solo
+    if (!lite && t0 && crudo < 500) { lento += (crudo - lento) * 0.05; if (++ult > 90 && lento > 28) { lite = true; medir(); } }
+    var dt = Math.min(0.05, crudo / 1000 || 0); t0 = t;
     px += (tx - px) * 0.04; py += (ty - py) * 0.04;
     ctx.clearRect(0, 0, W, H);
 
@@ -39,7 +44,7 @@
     bajos += ((on ? A.bass : 0) - bajos) * 0.15;
     nivel += ((on ? 1 : 0) - nivel) * 0.06;
     var golpe = on && A.beatId !== ultimoBeat;
-    if (golpe) { ultimoBeat = A.beatId; impulso = 1; temblor = fuerte ? 9 : 4; }
+    if (golpe) { ultimoBeat = A.beatId; impulso = 1; temblor = lite ? 0 : fuerte ? 9 : 4; }
     impulso *= 0.88;
     // Barras: suben rápido y bajan despacio (menos rebote)
     for (var b = 0; b < barras.length; b++) {
@@ -47,7 +52,7 @@
       barras[b] += (obj - barras[b]) * (obj > barras[b] ? 0.3 : 0.07);
     }
     var pv = (nivel * (0.35 * bajos + 0.65 * impulso)).toFixed(3);
-    if (pv !== pulsoPrev) { pulsoPrev = pv; root.style.setProperty('--pulso', pv); } // lo leen botones, avatar y cursor; solo si cambió (evita recalcular estilos 60 veces/s en silencio)
+    if (!lite && pv !== pulsoPrev) { pulsoPrev = pv; root.style.setProperty('--pulso', pv); } // lo leen botones, avatar y cursor; solo si cambió (evita recalcular estilos 60 veces/s en silencio)
 
     // Luz del visualizador: una franja que sube desde abajo y una línea fina en la base, para unir las barras con el fondo
     if (nivel > 0.02) {
@@ -64,11 +69,11 @@
     // Barras gruesas que se desvanecen desde su propia punta
     if (nivel > 0.02) {
       var n = barras.length, paso = W / n, alt = H * (fuerte ? 0.45 : 0.3);
-      for (var k = 0; k < n; k++) {
-        var hb = barras[k] * alt + 3, g = ctx.createLinearGradient(0, H, 0, H - hb);
-        g.addColorStop(0, color); g.addColorStop(1, transp);
-        ctx.globalAlpha = 0.6 * nivel; ctx.fillStyle = g;
-        ctx.fillRect(k * paso + paso * 0.15, H - hb, Math.max(5, paso * 0.7), hb);
+      for (var k = 0; k < n; k += lite ? 2 : 1) {
+        var hb = barras[k] * alt + 3;
+        if (lite) { ctx.globalAlpha = 0.4 * nivel; ctx.fillStyle = color; }
+        else { var g = ctx.createLinearGradient(0, H, 0, H - hb); g.addColorStop(0, color); g.addColorStop(1, transp); ctx.globalAlpha = 0.6 * nivel; ctx.fillStyle = g; }
+        ctx.fillRect(k * paso + paso * 0.15, H - hb, Math.max(5, paso * (lite ? 1.6 : 0.7)), hb);
       }
     }
     ctx.fillStyle = color;
@@ -82,7 +87,7 @@
       var x = m.x + Math.sin(m.f) * 14 * m.z + px * m.z * 40, y = m.y + py * m.z * 40;
       if (m.y < -10) { motas[i] = crear(true); continue; }
       ctx.globalAlpha = Math.min(1, m.a * (0.65 + 0.35 * Math.sin(m.f * 2.3)) * (1 + impulso * 0.8));
-      ctx.shadowColor = color; ctx.shadowBlur = impulso * 14 * (0.4 + m.z); // el desenfoque aparece solo con el golpe
+      ctx.shadowColor = color; ctx.shadowBlur = lite ? 0 : impulso * 14 * (0.4 + m.z); // el desenfoque aparece solo con el golpe
       ctx.beginPath(); ctx.arc(x, y, m.r * (1 + impulso * 0.7 * m.z), 0, 6.2832); ctx.fill();
     }
     ctx.shadowBlur = 0;

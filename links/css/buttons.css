@@ -31,7 +31,7 @@ body[data-btn="hard"][data-hover] .btn:hover { border-color: var(--btn-text); }
 
 /* Botones animados: entran de a uno desde la izquierda, un brillo los cruza cada tanto y reaccionan a la música (--pulso) */
 @keyframes lt-btn-in { from { opacity: 0; transform: translateX(-26px) scale(.96); } }
-@keyframes lt-sheen { 0%, 72% { left: -55%; } 100% { left: 135%; } }
+@keyframes lt-sheen { 0%, 72% { translate: 0 0; } 100% { translate: 543% 0; } } /* translate en vez de left: no recalcula layout */
 .links .btn { overflow: hidden; scale: calc(1 + var(--pulso, 0) * .035); animation: lt-btn-in .6s cubic-bezier(.22, 1, .36, 1) backwards; animation-delay: calc(.35s + var(--k, 0) * 80ms); }
 .links .btn::before { content: ""; position: absolute; top: 0; bottom: 0; width: 35%; left: -55%; pointer-events: none; transform: skewX(-18deg);
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .13), transparent); animation: lt-sheen 7s ease-in-out infinite; animation-delay: calc(1.5s + var(--k, 0) * .9s); }

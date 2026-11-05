@@ -14,7 +14,7 @@ body[data-bg-anim="grid"]::before { content: ""; position: fixed; inset: 0; poin
   background-size: 44px 44px; mask-image: linear-gradient(#000, transparent 80%); -webkit-mask-image: linear-gradient(#000, transparent 80%); animation: lt-grid 20s linear infinite; }
 @keyframes lt-grid { to { background-position: 44px 44px; } }
 
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html::before { display: none; } }
 
 /* Camshake: fondo.js mueve --sx y --sy en cada beat (propiedad "translate": no pisa los transform de las animaciones) */
 .page, .np { translate: var(--sx, 0px) var(--sy, 0px); }
@@ -26,6 +26,7 @@ body[data-bg-anim="particulas"]::after { content: ""; position: fixed; inset: 0;
 
 /* Cortina: tapa todo en negro y se desvanece, así el fondo "aparece" y después entra el menú */
 html::before { content: ""; position: fixed; inset: 0; z-index: 9999; background: #000; pointer-events: none; animation: lt-cortina 1.2s ease-out both; }
+html.listo::before { display: none; }
 @keyframes lt-cortina { to { opacity: 0; visibility: hidden; } }
 
 /* Celu (sin mouse): quita lo que más cuesta a la GPU. Blur en vivo, ruido con mezcla, animaciones infinitas y fondos que repintan. */
@@ -34,6 +35,8 @@ html::before { content: ""; position: fixed; inset: 0; z-index: 9999; background
   @keyframes lt-pop { from { opacity: 0; transform: scale(.9); } }
   body[data-bg-anim="particulas"]::after, body[data-bg-anim="grid"]::before { display: none; }
   body[data-bg-anim="gradient"] { animation: none; }
+  body { background-attachment: scroll; } /* fixed repinta todo en cada scroll en celu */
+  .links .btn::before { display: none; }
   .btn > svg:first-child, .social svg, .btn:hover > svg:first-child, .social:hover svg { animation: none; }
   .np, .gate, .musica, .pv, body[data-btn="glass"] .btn, body[data-layout="card"] .page::before { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .np { background: rgba(28, 28, 32, .92); }
