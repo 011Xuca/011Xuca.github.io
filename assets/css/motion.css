@@ -52,3 +52,5 @@ a.proj:hover .proj-ic { transform: scale(1.08) rotate(-4deg); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js-anim .rev { opacity: 1; transform: none; }
 }
+
+@media (hover: none) { .punto { animation: none; } }

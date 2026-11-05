@@ -14,6 +14,7 @@
   var W, H, dpr, motas = [], px = 0, py = 0, tx = 0, ty = 0, raf = 0;
   var bajos = 0, impulso = 0, temblor = 0, ultimoBeat = 0, nivel = 0, barras = new Float32Array(48);
   var fuerte = Math.min(innerWidth, innerHeight) > 600; // en celu el temblor y las barras son más suaves
+  var pulsoPrev = '';
   function crear(abajo) {
     var z = Math.random(); // 0 = lejos, 1 = cerca
     return { x: Math.random() * W, y: abajo ? H + 10 : Math.random() * H, z: z, r: 0.6 + z * 2.4, v: 6 + z * 26, a: 0.15 + z * 0.55, f: Math.random() * 6.28, s: 0.4 + Math.random() * 0.8, k: 0 };
@@ -23,7 +24,7 @@
     W = root.clientWidth; H = root.clientHeight; // sin la barra de scroll
     cv.width = W * dpr; cv.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = Math.round(Math.min(90, W * H / 14000)); // menos motas en pantallas chicas
+    var n = Math.round(Math.min(fuerte ? 90 : 35, W * H / 14000)); // menos motas en pantallas chicas
     while (motas.length < n) motas.push(crear(false));
     motas.length = n;
   }
@@ -45,7 +46,8 @@
       var obj = on ? Math.pow(A.bars[b], 1.4) : 0;
       barras[b] += (obj - barras[b]) * (obj > barras[b] ? 0.3 : 0.07);
     }
-    root.style.setProperty('--pulso', (nivel * (0.35 * bajos + 0.65 * impulso)).toFixed(3)); // lo leen botones, avatar y cursor
+    var pv = (nivel * (0.35 * bajos + 0.65 * impulso)).toFixed(3);
+    if (pv !== pulsoPrev) { pulsoPrev = pv; root.style.setProperty('--pulso', pv); } // lo leen botones, avatar y cursor; solo si cambió (evita recalcular estilos 60 veces/s en silencio)
 
     // Luz del visualizador: una franja que sube desde abajo y una línea fina en la base, para unir las barras con el fondo
     if (nivel > 0.02) {
