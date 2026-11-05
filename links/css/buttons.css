@@ -1,0 +1,41 @@
+/* Botones: el estilo sale de data-btn (fill | soft | outline | shadow | hard | glass) */
+.btn { position: relative; display: flex; align-items: center; gap: 14px; padding: var(--btn-padding) 18px; border-radius: var(--btn-radius);
+  background: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-border); text-decoration: none; transition: transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s, border-color .2s, background .2s; }
+.btn > svg { width: 22px; height: 22px; flex: none; }
+.btn .tx { flex: 1; min-width: 0; display: grid; text-align: left; }
+.btn b { font-weight: 700; }
+.btn small { color: var(--muted); font-size: .82rem; }
+.btn .go { width: 18px; height: 18px; opacity: .45; transition: transform .2s, opacity .2s; }
+.btn:hover .go { transform: translateX(3px); opacity: 1; }
+.btn.featured { padding-block: calc(var(--btn-padding) + 8px); border-color: var(--accent); }
+.btn.featured b { font-size: 1.1rem; }
+.badge { font-size: .72rem; line-height: 1; font-weight: 700; font-style: normal; padding: 4px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-text); letter-spacing: .06em; }
+
+body[data-btn="soft"] .btn { border-color: transparent; }
+body[data-btn="outline"] .btn { background: transparent; border-width: 2px; }
+body[data-btn="shadow"] .btn { box-shadow: 0 8px 20px -10px rgba(0,0,0,.6); border-color: transparent; }
+body[data-btn="hard"] .btn { border: 2px solid var(--btn-text); box-shadow: 4px 4px 0 var(--btn-text); }
+body[data-btn="hard"] .btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--btn-text); }
+body[data-btn="glass"] .btn { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+/* Hover: lift | grow | glow | none */
+body[data-hover="lift"] .btn:hover { transform: translateY(-3px); border-color: var(--accent); }
+body[data-hover="grow"] .btn:hover { transform: scale(1.04); border-color: var(--accent); }
+body[data-hover="glow"] .btn:hover { border-color: var(--accent); box-shadow: 0 0 22px -2px var(--accent); }
+body[data-btn="hard"][data-hover] .btn:hover { border-color: var(--btn-text); }
+
+/* Brillo que sigue al mouse (render.js guarda --mx y --my) */
+.btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .25s;
+  background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%); }
+.btn:hover::after { opacity: 1; }
+
+/* Botones animados: entran de a uno desde la izquierda, un brillo los cruza cada tanto y reaccionan a la música (--pulso) */
+@keyframes lt-btn-in { from { opacity: 0; transform: translateX(-26px) scale(.96); } }
+@keyframes lt-sheen { 0%, 72% { left: -55%; } 100% { left: 135%; } }
+.links .btn { overflow: hidden; scale: calc(1 + var(--pulso, 0) * .035); animation: lt-btn-in .6s cubic-bezier(.22, 1, .36, 1) backwards; animation-delay: calc(.35s + var(--k, 0) * 80ms); }
+.links .btn::before { content: ""; position: absolute; top: 0; bottom: 0; width: 35%; left: -55%; pointer-events: none; transform: skewX(-18deg);
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .13), transparent); animation: lt-sheen 7s ease-in-out infinite; animation-delay: calc(1.5s + var(--k, 0) * .9s); }
+.links .btn:active { scale: .97; }
+.btn > svg:first-child { transition: rotate .3s cubic-bezier(.34, 1.56, .64, 1), scale .3s cubic-bezier(.34, 1.56, .64, 1); }
+.btn:hover > svg:first-child { scale: 1.14; }
+.avatar { scale: calc(1 + var(--pulso, 0) * .08); }

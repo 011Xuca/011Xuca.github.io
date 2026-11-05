@@ -1,0 +1,25 @@
+/* Entrada (data-entrance) y fondo animado (data-bg-anim) */
+@keyframes lt-fade { from { opacity: 0; } }
+@keyframes lt-slide { from { opacity: 0; transform: translateY(16px); } }
+@keyframes lt-pop { from { opacity: 0; transform: scale(.9); } }
+body:not([data-entrance="none"]) .page > * { animation: var(--ent, lt-slide) .6s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--i) * 70ms); }
+body[data-entrance="fade"] { --ent: lt-fade; }
+body[data-entrance="slide"] { --ent: lt-slide; }
+body[data-entrance="pop"] { --ent: lt-pop; }
+
+@keyframes lt-grad { 50% { background-position: 100% 50%; } }
+body[data-bg-anim="gradient"] { background-size: 220% 220%; animation: lt-grad 14s ease-in-out infinite; }
+body[data-bg-anim="grid"]::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: .5;
+  background-image: linear-gradient(var(--btn-border) 1px, transparent 1px), linear-gradient(90deg, var(--btn-border) 1px, transparent 1px);
+  background-size: 44px 44px; mask-image: linear-gradient(#000, transparent 80%); -webkit-mask-image: linear-gradient(#000, transparent 80%); animation: lt-grid 20s linear infinite; }
+@keyframes lt-grid { to { background-position: 44px 44px; } }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Camshake: fondo.js mueve --sx y --sy en cada beat (propiedad "translate": no pisa los transform de las animaciones) */
+.page, .np { translate: var(--sx, 0px) var(--sy, 0px); }
+
+/* Partículas: el canvas lo dibuja js/fondo.js; encima va un grano fino para que el fondo no se vea liso */
+.fondo-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+body[data-bg-anim="particulas"]::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }

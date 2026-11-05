@@ -1,0 +1,21 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); background-attachment: fixed;
+  font: 16px/1.5 var(--font, "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif); -webkit-font-smoothing: antialiased;
+}
+.page { width: min(var(--width), 100%); margin: 0 auto; padding: 56px 16px 40px; display: grid; justify-items: center; gap: 0; }
+.avatar { width: 96px; height: 96px; object-fit: cover; box-shadow: 0 0 0 3px var(--accent); background: var(--btn-bg); }
+.avatar.circle { border-radius: 50%; } .avatar.rounded { border-radius: 24px; } .avatar.square { border-radius: 0; }
+.name { margin: 16px 0 0; font-size: 1.6rem; line-height: 1.2; letter-spacing: -.01em; }
+.handle { margin: 2px 0 0; color: var(--muted); font-size: .95rem; }
+.bio { margin: 10px 0 0; max-width: 36ch; text-align: center; color: var(--muted); }
+.socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+.social { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: var(--text); transition: transform .2s, color .2s; }
+.social:hover { color: var(--accent); transform: translateY(-2px); }
+.social svg { width: 22px; height: 22px; }
+svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.links { width: 100%; display: grid; gap: 12px; margin-top: 26px; }
+.grupo { margin: 12px 0 0; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.sep { width: 100%; border: 0; border-top: 1px solid var(--btn-border); margin: 6px 0; }
+.pie { margin-top: 32px; font-size: .8rem; color: var(--muted); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

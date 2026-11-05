@@ -1,0 +1,13 @@
+/* Cursor propio: rombo giratorio con punto exacto, estela y chispas que suben como las motas del fondo.
+   El rombo escala con la música (--pulso lo publica js/fondo.js). Solo con mouse (js/cursor.js agrega .cursor-custom) */
+html.cursor-custom, html.cursor-custom * { cursor: none !important; }
+.cursor-trail { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 60; pointer-events: none; }
+.cursor-ring, .cursor-dot { position: fixed; left: 0; top: 0; z-index: 61; pointer-events: none; opacity: 0; transition: opacity .25s; }
+.cursor-ring { --k: 1; width: 28px; height: 28px; margin: -14px 0 0 -14px; border: 1.5px solid var(--accent, #fff); border-radius: 6px; rotate: 45deg;
+  scale: calc(var(--k) * (1 + var(--pulso, 0) * .8)); animation: cur-giro 7s linear infinite;
+  transition: opacity .25s, scale .12s ease-out, background .25s, border-radius .25s; }
+.cursor-ring.grande { --k: 1.7; border-radius: 10px; background: color-mix(in srgb, var(--accent, #fff) 14%, transparent); }
+.cursor-ring.click { --k: .75; }
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--accent, #fff); scale: calc(1 + var(--pulso, 0) * .8); }
+.cursor-on .cursor-ring, .cursor-on .cursor-dot { opacity: 1; }
+@keyframes cur-giro { to { rotate: 405deg; } }

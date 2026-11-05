@@ -1,7 +1,7 @@
 /* Anuncios: espacios reservados con tamaño fijo para que la página no salte al cargar */
 .ad { display: grid; place-items: center; margin-inline: auto; overflow: hidden; }
 .ad:empty { display: none; }
-.ad-label { display: block; font: 600 .68rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 4px; }
+.ad-label { display: block; font: 600 .72rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 4px; }
 .ad-bottom { padding-block: 32px; border-top: 1px solid var(--line); }
 .ad-bottom .ad { width: min(100%, 728px); min-height: 90px; }
 .ad-bottom[hidden], .ad-side[hidden] { display: none; }

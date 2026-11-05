@@ -1,0 +1,29 @@
+/* Vista previa de links (js/preview.js) e íconos animados */
+.pv { position: fixed; z-index: 55; width: 280px; display: grid; gap: 10px; padding: 16px; border-radius: 18px; color: #fff; pointer-events: none;
+  background: rgba(22, 24, 32, .74); border: 1px solid rgba(255, 255, 255, .18); backdrop-filter: blur(22px) saturate(160%); -webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .6); opacity: 0; scale: .94; transition: opacity .18s, scale .22s cubic-bezier(.22, 1, .36, 1); }
+.pv.on { opacity: 1; scale: 1; }
+.pv svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pv-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; }
+.pv-cab { display: flex; align-items: center; gap: 12px; }
+.pv-ic { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: rgba(255, 255, 255, .12); }
+.pv-ic svg { width: 22px; height: 22px; }
+.pv-tt { min-width: 0; display: grid; }
+.pv-tt b { font-size: 1rem; line-height: 1.25; }
+.pv-tt small { font-size: .78rem; color: rgba(255, 255, 255, .6); }
+.pv-desc { margin: 0; font-size: .88rem; line-height: 1.5; color: rgba(255, 255, 255, .82); }
+.pv-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.pv-tags span { padding: 3px 10px; border-radius: 999px; font-size: .75rem; font-weight: 600; color: var(--accent, #9ad7ff); background: color-mix(in srgb, var(--accent, #9ad7ff) 14%, transparent); border: 1px solid color-mix(in srgb, var(--accent, #9ad7ff) 30%, transparent); }
+.pv-cta { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; padding: 9px 14px; border-radius: 12px; font-size: .86rem; font-weight: 700; color: #07080F; background: var(--accent, #9ad7ff); }
+.pv-cta svg { width: 16px; height: 16px; }
+
+/* Íconos: se dibujan al cargar (trazo), flotan suave y se sacuden al pasar el mouse. Solo si no pediste "reducir movimiento" */
+@keyframes lt-dibuja { to { stroke-dashoffset: 0; } }
+@keyframes lt-flota { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -2px; rotate: -5deg; } }
+@keyframes lt-sacude { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(5deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .btn > svg:first-child [pathLength], .social svg [pathLength] { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lt-dibuja .9s ease-out forwards; animation-delay: calc(.6s + var(--k, 0) * 90ms); }
+  .btn > svg:first-child, .social svg { animation: lt-flota 4.5s ease-in-out infinite; animation-delay: calc(1.6s + var(--k, 0) * .45s); }
+  /* la sacudida usa transform y se suma a la flotación (no la reemplaza): al terminar no hay salto */
+  .btn:hover > svg:first-child, .social:hover svg { animation: lt-flota 4.5s ease-in-out infinite, lt-sacude .6s ease; animation-delay: calc(1.6s + var(--k, 0) * .45s), 0s; }
+}

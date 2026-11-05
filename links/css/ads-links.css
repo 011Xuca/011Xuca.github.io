@@ -1,0 +1,5 @@
+/* Los laterales del sitio están pensados para 1120px; acá la página es angosta, así que van más cerca */
+.ad-side.izq { right: calc(50% + var(--width) / 2 + 20px); }
+.ad-side.der { left: calc(50% + var(--width) / 2 + 20px); }
+@media (min-width: 900px) { .ad-side { display: block; } }
+.ad-bottom { margin-top: 24px; }
