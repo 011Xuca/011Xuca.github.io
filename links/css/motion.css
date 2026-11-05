@@ -1,8 +1,8 @@
 /* Entrada (data-entrance) y fondo animado (data-bg-anim) */
 @keyframes lt-fade { from { opacity: 0; } }
-@keyframes lt-slide { from { opacity: 0; transform: translateY(16px); } }
-@keyframes lt-pop { from { opacity: 0; transform: scale(.9); } }
-body:not([data-entrance="none"]) .page > * { animation: var(--ent, lt-slide) .6s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--i) * 70ms); }
+@keyframes lt-slide { from { opacity: 0; transform: translateY(40px) scale(.96); filter: blur(10px); } }
+@keyframes lt-pop { from { opacity: 0; transform: scale(.8); filter: blur(10px); } }
+body:not([data-entrance="none"]) .page > * { animation: var(--ent, lt-slide) .9s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--i) * 110ms + 150ms); }
 body[data-entrance="fade"] { --ent: lt-fade; }
 body[data-entrance="slide"] { --ent: lt-slide; }
 body[data-entrance="pop"] { --ent: lt-pop; }
@@ -23,3 +23,7 @@ body[data-bg-anim="grid"]::before { content: ""; position: fixed; inset: 0; poin
 .fondo-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 body[data-bg-anim="particulas"]::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* Cortina: tapa todo en negro y se desvanece, así el fondo "aparece" y después entra el menú */
+html::before { content: ""; position: fixed; inset: 0; z-index: 9999; background: #000; pointer-events: none; animation: lt-cortina 1.2s ease-out both; }
+@keyframes lt-cortina { to { opacity: 0; visibility: hidden; } }
