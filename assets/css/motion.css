@@ -1,0 +1,54 @@
+/* Movimiento: entrada de la portada, aparecer al bajar, hover de tarjetas y botones. Todo se apaga con "reducir movimiento". */
+@keyframes sube { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes latido { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--op) 60%, transparent); } 100% { box-shadow: 0 0 0 7px transparent; } }
+@keyframes cruza { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+
+/* Portada: cada elemento entra de a uno */
+.hero > .wrap > * { animation: sube .7s cubic-bezier(.22, 1, .36, 1) both; }
+.hero > .wrap > :nth-child(2) { animation-delay: .08s; }
+.hero > .wrap > :nth-child(3) { animation-delay: .16s; }
+.hero > .wrap > :nth-child(4) { animation-delay: .24s; }
+.hero > .wrap > :nth-child(5) { animation-delay: .32s; }
+.hero > .wrap > .hero-ic { animation: sube .7s cubic-bezier(.22, 1, .36, 1) both, flota 5s ease-in-out .8s infinite; }
+.punto { animation: latido 2s ease-out infinite; }
+.top { animation: sube .5s ease both; transition: box-shadow .3s; }
+.top.bajo { box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .6); }
+
+/* Aparecer al bajar (la clase la ponen js/motion.js; sin JS todo se ve normal) */
+.js-anim .rev { opacity: 0; transform: translateY(22px); }
+.js-anim .rev.ver { opacity: 1; transform: none; transition: opacity .55s ease, transform .6s cubic-bezier(.22, 1, .36, 1); transition-delay: var(--d, 0s); }
+
+/* Tarjetas */
+.feat, .step, .leg, .cfg, .proj { transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .2s, box-shadow .25s; }
+.feat:hover, .step:hover, .leg:hover, .cfg:hover, a.proj:hover { transform: translateY(-4px); border-color: var(--op); box-shadow: 0 16px 32px -20px var(--op); }
+.leg:hover { border-color: var(--c); box-shadow: 0 16px 32px -20px var(--c); }
+.feat .ic { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+.feat:hover .ic { transform: rotate(-8deg) scale(1.12); }
+.proj-ic { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+a.proj:hover .proj-ic { transform: scale(1.08) rotate(-4deg); }
+.brand img, .brand svg { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+.brand:hover img, .brand:hover svg { transform: rotate(-8deg) scale(1.1); }
+
+/* Botones: se alzan, brillo que cruza en el principal, onda al tocar */
+.btn, .icon-btn, .copy, .gh-btn { position: relative; overflow: hidden; transition: transform .2s cubic-bezier(.34, 1.56, .64, 1), background .15s, border-color .15s, filter .15s; }
+.btn:hover, .icon-btn:hover, .gh-btn:hover { transform: translateY(-2px); }
+.btn:active, .icon-btn:active, .copy:active { transform: scale(.96); }
+.btn.main::before { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; pointer-events: none; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent); transform: skewX(-20deg); animation: cruza 4s ease-in-out infinite; }
+.onda { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .4); transform: scale(0); animation: onda .6s ease-out forwards; pointer-events: none; }
+@keyframes onda { to { transform: scale(1); opacity: 0; } }
+.icon-btn svg { transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
+#btn-tema:hover svg { transform: rotate(40deg); }
+
+/* Links de arriba: rayita que se desliza */
+.links a { position: relative; }
+.links a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; border-radius: 2px; background: var(--op); transform: scaleX(0); transform-origin: right; transition: transform .3s cubic-bezier(.65, 0, .35, 1); }
+.links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Barra de progreso de lectura */
+.progreso { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 6; background: var(--op); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js-anim .rev { opacity: 1; transform: none; }
+}

@@ -1,0 +1,25 @@
+/* Imagen de fondo de cada portada. Se dibuja como máscara sobre el color de acento, así sigue el tema claro/oscuro.
+   Inicio = puntos · Optimizer = circuito · Monitor = línea de pulso (se desliza sola). */
+.hero { position: relative; overflow: hidden; }
+.hero > .wrap { position: relative; z-index: 1; }
+.backdrop { position: absolute; inset: 0; background: var(--op); opacity: .2; pointer-events: none; }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 40%, var(--bg)); }
+
+body.inicio .backdrop {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='2' cy='2' r='1.3'/%3E%3C/svg%3E");
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='2' cy='2' r='1.3'/%3E%3C/svg%3E");
+  animation: deriva-puntos 30s linear infinite;
+}
+body.p-op .backdrop {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M0 30h40l10 10h30M80 40v30l10 10h30M0 90h30l10-10h20M60 120v-20l10-10'/%3E%3Ccircle cx='80' cy='40' r='3' fill='black'/%3E%3Ccircle cx='40' cy='80' r='3' fill='black'/%3E%3Ccircle cx='120' cy='80' r='3' fill='black'/%3E%3C/svg%3E");
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' fill='none' stroke='black' stroke-width='1.5'%3E%3Cpath d='M0 30h40l10 10h30M80 40v30l10 10h30M0 90h30l10-10h20M60 120v-20l10-10'/%3E%3Ccircle cx='80' cy='40' r='3' fill='black'/%3E%3Ccircle cx='40' cy='80' r='3' fill='black'/%3E%3Ccircle cx='120' cy='80' r='3' fill='black'/%3E%3C/svg%3E");
+  animation: deriva-circuito 40s linear infinite;
+}
+body.p-mon .backdrop {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M0 60H60l8-8 8 8h16l10-34 14 68 12-44 8 10h104'/%3E%3C/svg%3E");
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M0 60H60l8-8 8 8h16l10-34 14 68 12-44 8 10h104'/%3E%3C/svg%3E");
+  animation: deriva-pulso 10s linear infinite;
+}
+@keyframes deriva-puntos { to { -webkit-mask-position: 28px 28px; mask-position: 28px 28px; } }
+@keyframes deriva-circuito { to { -webkit-mask-position: 120px 120px; mask-position: 120px 120px; } }
+@keyframes deriva-pulso { to { -webkit-mask-position: -240px 0; mask-position: -240px 0; } }

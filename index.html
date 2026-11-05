@@ -8,10 +8,21 @@
 <link rel="icon" href="assets/logo.svg?v=3" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=19">
-<script src="assets/site.js?v=19"></script>
+<link rel="stylesheet" href="assets/css/base.css?v=21">
+<link rel="stylesheet" href="assets/css/chrome.css?v=21">
+<link rel="stylesheet" href="assets/css/sections.css?v=21">
+<link rel="stylesheet" href="assets/css/ads.css?v=22">
+<link rel="stylesheet" href="assets/css/backdrops.css?v=22">
+<link rel="stylesheet" href="assets/css/motion.css?v=22">
+<script src="assets/js/ui.js?v=21"></script>
+<script defer src="assets/js/ads.js?v=21"></script>
+<script defer src="assets/js/motion.js?v=22"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1804493682737411"
+     crossorigin="anonymous"></script>
 </head>
 <body class="inicio" data-title-en="011Xuca">
+<aside class="ad-side izq" data-ad="izq" hidden aria-label="Publicidad"><span class="ad-label">Publicidad</span><div class="ad"></div></aside>
+<aside class="ad-side der" data-ad="der" hidden aria-label="Publicidad"><span class="ad-label">Publicidad</span><div class="ad"></div></aside>
 
 <header class="top">
   <div class="wrap">
@@ -33,8 +44,7 @@
 </header>
 
 <main>
-  <section class="hero">
-    <div class="fondo" aria-hidden="true"><i></i><i></i><i></i></div>
+  <section class="hero"><div class="backdrop" aria-hidden="true"></div>
     <div class="wrap">
       <h1 data-en="Hi, I'm <em>Xuca</em>.">Hola, soy <em>Xuca</em>.</h1>
       <div class="ctas">
@@ -52,14 +62,14 @@
         <h2 data-en="What I make">Lo que hago</h2>
       </div>
       <div class="projects">
-        <a class="proj grad on-card" href="xuca-optimizer/index.html">
+        <a class="proj" href="xuca-optimizer/index.html">
           <span class="tag">Windows 10 / 11</span>
-          <div class="proj-tit"><img class="proj-ic" src="assets/xucaop.ico" alt="" width="52" height="52"><h3 style="font-size:1.5rem">Xuca <span class="op">OP</span>timizer</h3></div>
+          <div class="proj-tit"><img class="proj-ic" src="assets/xucaop.ico" alt="" width="52" height="52"><h3>Xuca <span class="op">OP</span>timizer</h3></div>
           <p data-en="Free optimizer for Windows: debloat, privacy, gaming, cache cleaning, drivers and configs, all in one app with checkboxes.">Optimizador gratis para Windows: debloat, privacidad, gaming, limpieza, drivers y configs, todo en una app con casillas.</p>
         </a>
-        <a class="proj grad on-card" href="xuca-monitor/index.html">
+        <a class="proj" href="xuca-monitor/index.html">
           <span class="tag">Windows 10 / 11</span>
-          <div class="proj-tit"><img class="proj-ic" src="assets/xucamonitor.ico" alt="" width="52" height="52"><h3 style="font-size:1.5rem">Xuca Monitor</h3></div>
+          <div class="proj-tit"><img class="proj-ic" src="assets/xucamonitor.ico" alt="" width="52" height="52"><h3>Xuca Monitor</h3></div>
           <p data-en="Tells you why your internet drops, what makes your FPS drop, which USB disconnected and why there was a blue screen. It lives in the tray and barely uses anything.">Te dice por qué se corta internet, qué hace bajar tus FPS, qué USB se desconectó y por qué hubo un pantallazo azul. Vive en la bandeja y casi no gasta nada.</p>
         </a>
         <div class="proj soon">
@@ -70,6 +80,7 @@
       </div>
     </div>
   </section>
+  <div class="ad-bottom" data-ad="abajo" hidden aria-label="Publicidad"><div class="wrap"><span class="ad-label">Publicidad</span><div class="ad"></div></div></div>
 </main>
 
 <footer>

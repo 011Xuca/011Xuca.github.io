@@ -1,0 +1,41 @@
+/* Sitio sobrio: superficies planas, un solo acento por página.
+   Inicio = grafito neutro. Optimizer = azul pizarra + celeste. Monitor = verde oscuro + verde. */
+:root {
+  --bg: #121316; --bg-2: #181A1F; --card: #1E2025; --line: #2B2E35;
+  --fg: #F2F3F5; --muted: #9A9FA8; --soft: #C3C7CE;
+  --op: #22D3EE; --op-ink: #04222A;
+  --yellow: #E5B567; --magenta: #C58AF9; --red: #F28B82;
+  --display: "Segoe UI Variable Display", "Segoe UI", "Figtree", system-ui, sans-serif;
+  --body: "Segoe UI Variable Text", "Segoe UI", "Figtree", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, "Cascadia Mono", monospace;
+  color-scheme: dark;
+}
+/* Producto: Xuca OPtimizer */
+body.p-op { --bg: #0D1520; --bg-2: #122030; --card: #162739; --line: #24384D; }
+/* Producto: Xuca Monitor */
+body.p-mon { --bg: #100F1C; --bg-2: #171628; --card: #1D1C32; --line: #2E2C4A; }
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --bg: #F4F5F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D9DCE2; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E; --op: #0E7490; --op-ink: #fff; --yellow: #A16207; --magenta: #7E22CE; --red: #B91C1C; color-scheme: light; }
+  :root:not([data-theme="dark"]) body.p-op { --bg: #EAF1F8; --bg-2: #F8FBFE; --card: #FFFFFF; --line: #CCDAE8; }
+  :root:not([data-theme="dark"]) body.p-mon { --bg: #EFEEF8; --bg-2: #F9F9FE; --card: #FFFFFF; --line: #D7D5EA; }
+}
+:root[data-theme="light"] { --bg: #F4F5F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D9DCE2; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E; --op: #0E7490; --op-ink: #fff; --yellow: #A16207; --magenta: #7E22CE; --red: #B91C1C; color-scheme: light; }
+:root[data-theme="light"] body.p-op { --bg: #EAF1F8; --bg-2: #F8FBFE; --card: #FFFFFF; --line: #CCDAE8; }
+:root[data-theme="light"] body.p-mon { --bg: #EFEEF8; --bg-2: #F9F9FE; --card: #FFFFFF; --line: #D7D5EA; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+a { color: inherit; }
+img { max-width: 100%; }
+p { margin: 0; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.02em; }
+h3 { font-size: 1.05rem; }
+.op { color: var(--op); font-weight: 800; }
+:focus-visible { outline: 2px solid var(--op); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }

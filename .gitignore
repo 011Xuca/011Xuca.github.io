@@ -4,3 +4,10 @@
 # Archivos que crea Windows solo
 Thumbs.db
 desktop.ini
+
+# Configuracion de Claude Code
+.claude/
+
+# Carpetas de herramientas de IA
+.impeccable/
+.playwright-mcp/
