@@ -15,13 +15,18 @@ body.p-op { --bg: #0D1520; --bg-2: #122030; --card: #162739; --line: #24384D; }
 /* Producto: Xuca Monitor */
 body.p-mon { --bg: #100F1C; --bg-2: #171628; --card: #1D1C32; --line: #2E2C4A; }
 
+/* Producto: Hiber */
+body.p-hib { --bg: #0C1618; --bg-2: #112224; --card: #152A2D; --line: #234347; }
+
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) { --bg: #F4F5F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D9DCE2; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E; --op: #0E7490; --op-ink: #fff; --yellow: #A16207; --magenta: #7E22CE; --red: #B91C1C; color-scheme: light; }
   :root:not([data-theme="dark"]) body.p-op { --bg: #EAF1F8; --bg-2: #F8FBFE; --card: #FFFFFF; --line: #CCDAE8; }
+  :root:not([data-theme="dark"]) body.p-hib { --bg: #E8F3F2; --bg-2: #F6FBFA; --card: #FFFFFF; --line: #C9E0DE; }
   :root:not([data-theme="dark"]) body.p-mon { --bg: #EFEEF8; --bg-2: #F9F9FE; --card: #FFFFFF; --line: #D7D5EA; }
 }
 :root[data-theme="light"] { --bg: #F4F5F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D9DCE2; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E; --op: #0E7490; --op-ink: #fff; --yellow: #A16207; --magenta: #7E22CE; --red: #B91C1C; color-scheme: light; }
 :root[data-theme="light"] body.p-op { --bg: #EAF1F8; --bg-2: #F8FBFE; --card: #FFFFFF; --line: #CCDAE8; }
+:root[data-theme="light"] body.p-hib { --bg: #E8F3F2; --bg-2: #F6FBFA; --card: #FFFFFF; --line: #C9E0DE; }
 :root[data-theme="light"] body.p-mon { --bg: #EFEEF8; --bg-2: #F9F9FE; --card: #FFFFFF; --line: #D7D5EA; }
 
 * { box-sizing: border-box; }

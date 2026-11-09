@@ -20,8 +20,14 @@ body.p-mon .backdrop {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='120' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'%3E%3Cpath d='M0 60H60l8-8 8 8h16l10-34 14 68 12-44 8 10h104'/%3E%3C/svg%3E");
   animation: deriva-pulso 10s linear infinite;
 }
+body.p-hib .backdrop {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' fill='black'%3E%3Cpath d='M30 18a12 12 0 1 0 10 18 9 9 0 0 1-10-18z'/%3E%3Ccircle cx='82' cy='30' r='1.6'/%3E%3Ccircle cx='70' cy='86' r='1.3'/%3E%3Ccircle cx='14' cy='72' r='1.3'/%3E%3Cpath d='M88 74h10l-10 10h10' fill='none' stroke='black' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' fill='black'%3E%3Cpath d='M30 18a12 12 0 1 0 10 18 9 9 0 0 1-10-18z'/%3E%3Ccircle cx='82' cy='30' r='1.6'/%3E%3Ccircle cx='70' cy='86' r='1.3'/%3E%3Ccircle cx='14' cy='72' r='1.3'/%3E%3Cpath d='M88 74h10l-10 10h10' fill='none' stroke='black' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E");
+  animation: deriva-luna 50s linear infinite;
+}
 /* En celu animar la máscara repinta toda la portada en cada cuadro: queda quieta */
 @media (hover: none) { body .backdrop { animation: none; } }
 @keyframes deriva-puntos{ to { -webkit-mask-position: 28px 28px; mask-position: 28px 28px; } }
 @keyframes deriva-circuito { to { -webkit-mask-position: 120px 120px; mask-position: 120px 120px; } }
 @keyframes deriva-pulso { to { -webkit-mask-position: -240px 0; mask-position: -240px 0; } }
+@keyframes deriva-luna { to { -webkit-mask-position: 110px 110px; mask-position: 110px 110px; } }
