@@ -15,7 +15,7 @@
   var bajos = 0, impulso = 0, temblor = 0, ultimoBeat = 0, nivel = 0, barras = new Float32Array(48);
   var fuerte = Math.min(innerWidth, innerHeight) > 600; // en celu el temblor y las barras son más suaves
   var pulsoPrev = '';
-  var lite = matchMedia('(hover: none)').matches, lento = 0, ult = 0; // lite = celu o equipo lento: menos efectos
+  var lite = matchMedia('(hover: none)').matches || !!window.LTSinGPU, lento = 0, ult = 0; // lite = celu o equipo lento: menos efectos
   function crear(abajo) {
     var z = Math.random(); // 0 = lejos, 1 = cerca
     return { x: Math.random() * W, y: abajo ? H + 10 : Math.random() * H, z: z, r: 0.6 + z * 2.4, v: 6 + z * 26, a: 0.15 + z * 0.55, f: Math.random() * 6.28, s: 0.4 + Math.random() * 0.8, k: 0 };
@@ -34,7 +34,7 @@
     if (lite && t - t0 < 30) { raf = requestAnimationFrame(frame); return; } // celu: 30 fps
     var crudo = t - t0;
     // Sin aceleracion por hardware o equipo lento: si el promedio pasa de 28 ms por cuadro, baja a modo lite solo
-    if (!lite && t0 && crudo < 500) { lento += (crudo - lento) * 0.05; if (++ult > 90 && lento > 28) { lite = true; medir(); } }
+    if (!lite && t0 && crudo < 500) { lento += (crudo - lento) * 0.05; if (++ult > 90 && lento > 28) { lite = true; root.classList.add('sin-gpu'); medir(); } }
     var dt = Math.min(0.05, crudo / 1000 || 0); t0 = t;
     px += (tx - px) * 0.04; py += (ty - py) * 0.04;
     ctx.clearRect(0, 0, W, H);

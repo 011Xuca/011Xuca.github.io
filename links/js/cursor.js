@@ -2,7 +2,7 @@
 // Reacciona a la música: la estela se ensancha y el rombo escala con --pulso (lo publica fondo.js).
 // Solo con mouse (no en celu) y sin "reducir movimiento".
 (function () {
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.LTSinGPU || !matchMedia('(hover: hover) and (pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var root = document.documentElement, body = document.body;
   var cv = document.createElement('canvas'), ctx = cv.getContext('2d');
   var ring = document.createElement('div'), dot = document.createElement('div');
@@ -27,6 +27,8 @@
   addEventListener('pointerdown', function () { ring.classList.add('click'); });
   addEventListener('pointerup', function () { ring.classList.remove('click'); });
   function frame(t) {
+    // fondo.js agrega .sin-gpu si el equipo va lento sin aceleracion: se vuelve al cursor normal
+    if (root.classList.contains('sin-gpu')) { root.classList.remove('cursor-custom', 'cursor-on'); cv.remove(); ring.remove(); dot.remove(); return; }
     var dt = Math.min(0.05, (t - ult) / 1000 || 0); ult = t;
     var pulso = parseFloat(root.style.getPropertyValue('--pulso')) || 0;
     rx += (mx - rx) * 0.4; ry += (my - ry) * 0.4; // el rombo sigue con poca inercia

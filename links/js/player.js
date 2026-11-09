@@ -77,7 +77,7 @@
   var intentos = 0, ticks = 0, suma = 0, mudo = 0, reintentos = 0;
   A.estado = function () { return { ctx: ac ? ac.state : null, an: !!an, intentos: intentos, ticks: ticks, suma: suma }; }; // diagnóstico (consola: LTAudio.estado())
   function grafo() {
-    if (an) return;
+    if (an || document.documentElement.classList.contains('sin-gpu')) return; // sin aceleracion: sin analisis de audio, no hay visualizador
     // Se "escucha" una copia del audio (captureStream) y NO se conecta a la salida: el sonido sigue su camino normal,
     // así que si el análisis falla o el navegador no lo soporta (Safari), la música igual suena.
     var cap = au.captureStream || au.mozCaptureStream;
@@ -93,7 +93,7 @@
     } catch (e) { if (ac) ac.close(); ac = an = null; }
   }
   function analizar() {
-    A.on = !au.paused;
+    A.on = !au.paused && !document.documentElement.classList.contains('sin-gpu');
     if (!A.on) { A.bass = 0; A.bars.fill(0); return; }
     if (!an && intentos < 300 && intentos++ % 15 === 0) grafo();
     if (an && ac.state === 'suspended') ac.resume();

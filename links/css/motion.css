@@ -42,3 +42,16 @@ html.listo::before { display: none; }
   .np { background: rgba(28, 28, 32, .92); }
   .gate { background: rgba(10, 10, 14, .9); }
 }
+
+/* Sin aceleracion por hardware (index.html agrega .sin-gpu): render por software. Se quita todo lo que repinta o desenfoca en vivo. */
+html.sin-gpu body:not([data-entrance="none"]) .page > * { animation-name: lt-fade; }
+html.sin-gpu body[data-bg-anim="particulas"]::after, html.sin-gpu body[data-bg-anim="grid"]::before { display: none; }
+html.sin-gpu body[data-bg-anim="gradient"] { animation: none; }
+html.sin-gpu body { background-attachment: scroll; }
+html.sin-gpu .links .btn::before { display: none; }
+html.sin-gpu .btn > svg:first-child, html.sin-gpu .social svg, html.sin-gpu .btn:hover > svg:first-child, html.sin-gpu .social:hover svg { animation: none; }
+html.sin-gpu .np, html.sin-gpu .gate, html.sin-gpu .musica, html.sin-gpu .pv, html.sin-gpu body[data-btn="glass"] .btn, html.sin-gpu body[data-layout="card"] .page::before { backdrop-filter: none; -webkit-backdrop-filter: none; }
+html.sin-gpu .np { background: rgba(28, 28, 32, .92); }
+html.sin-gpu .gate { background: rgba(10, 10, 14, .9); }
+html.sin-gpu .page, html.sin-gpu .np { translate: none; }
+html.sin-gpu::before { display: none; } /* cortina */
