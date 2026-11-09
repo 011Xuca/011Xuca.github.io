@@ -6,7 +6,7 @@
 <script>setTimeout(function () { document.documentElement.classList.add('listo'); }, 1800); // red de seguridad: si la animacion de la cortina no corre, se quita igual</script>
 <script>/* Sin aceleracion por hardware (el navegador usa render por software): se apagan los efectos pesados (cursor, visualizador, blur) */
 (function () { var s = false; try { var c = document.createElement('canvas'), g = c.getContext('webgl', { failIfMajorPerformanceCaveat: true }) || c.getContext('experimental-webgl', { failIfMajorPerformanceCaveat: true });
-  if (!g) s = true; else { var e = g.getExtension('WEBGL_debug_renderer_info'); s = !!e && /swiftshader|llvmpipe|software|basic render/i.test(String(g.getParameter(e.UNMASKED_RENDERER_WEBGL))); } } catch (x) {}
+  if (!g) s = true; else { var e = g.getExtension('WEBGL_debug_renderer_info'); s = !!e && /swiftshader|llvmpipe|software|basic render|warp|microsoft/i.test(String(g.getParameter(e.UNMASKED_RENDERER_WEBGL))); } } catch (x) {}
   window.LTSinGPU = s; if (s) document.documentElement.classList.add('sin-gpu'); })();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>011Xuca · Links</title>
@@ -34,10 +34,10 @@
 <div class="ad-bottom" data-ad="abajo" hidden aria-label="Publicidad"><span class="ad-label">Publicidad</span><div class="ad"></div></div>
 <noscript><p style="text-align:center">Activá JavaScript para ver los links.</p></noscript>
 <script src="js/render.js?v=11"></script>
-<script src="js/fondo.js?v=14"></script>
+<script src="js/fondo.js?v=18"></script>
 <script src="js/player.js?v=12"></script>
 <script src="js/titulo.js?v=11"></script>
-<script src="js/cursor.js?v=12"></script>
+<script src="js/cursor.js?v=14"></script>
 <script src="js/preview.js?v=11"></script>
 <script defer src="../assets/js/ads.js"></script>
 </body>

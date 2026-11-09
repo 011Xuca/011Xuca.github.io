@@ -4,7 +4,7 @@
 // Solo corre con bgAnimation: 'particulas'. Se frena si la pestaña está oculta o si pedís "reducir movimiento".
 (function () {
   if (document.body.dataset.bgAnim !== 'particulas') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.LTSinGPU) return; // sin aceleracion: sin canvas ni visualizador
   var cv = document.createElement('canvas'), ctx = cv.getContext('2d');
   cv.className = 'fondo-canvas';
   document.body.insertBefore(cv, document.body.firstChild);
@@ -29,12 +29,13 @@
     while (motas.length < n) motas.push(crear(false));
     motas.length = n;
   }
-  var t0 = 0;
+  var t0 = 0, tr = 0;
   function frame(t) {
+    // fps reales del navegador (antes del limite de 30 fps del celu): si el promedio pasa de 22 ms por cuadro (<45 fps), se apaga todo
+    var raw = t - tr; tr = t;
+    if (raw > 0 && raw < 500) { lento += (raw - lento) * 0.05; if (++ult > 60 && lento > 22) { window.LTSinGPU = true; root.classList.add('sin-gpu'); cv.style.transition = 'opacity .8s'; cv.style.opacity = 0; ac.abort(); setTimeout(function () { cv.remove(); }, 900); return; } }
     if (lite && t - t0 < 30) { raf = requestAnimationFrame(frame); return; } // celu: 30 fps
     var crudo = t - t0;
-    // Sin aceleracion por hardware o equipo lento: si el promedio pasa de 28 ms por cuadro, baja a modo lite solo
-    if (!lite && t0 && crudo < 500) { lento += (crudo - lento) * 0.05; if (++ult > 90 && lento > 28) { lite = true; root.classList.add('sin-gpu'); medir(); } }
     var dt = Math.min(0.05, crudo / 1000 || 0); t0 = t;
     px += (tx - px) * 0.04; py += (ty - py) * 0.04;
     ctx.clearRect(0, 0, W, H);
@@ -100,9 +101,10 @@
     } else if (temblor) { temblor = 0; root.style.setProperty('--sx', '0px'); root.style.setProperty('--sy', '0px'); }
     raf = requestAnimationFrame(frame);
   }
-  addEventListener('resize', medir);
-  addEventListener('pointermove', function (e) { tx = e.clientX / W - 0.5; ty = e.clientY / H - 0.5; }, { passive: true });
-  addEventListener('deviceorientation', function (e) { if (e.gamma != null) { tx = Math.max(-0.5, Math.min(0.5, e.gamma / 60)); ty = Math.max(-0.5, Math.min(0.5, (e.beta - 45) / 90)); } }, { passive: true });
-  document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden) { t0 = performance.now(); raf = requestAnimationFrame(frame); } });
+  var ac = new AbortController(), S = ac.signal; // al apagar se quitan todos los listeners
+  addEventListener('resize', medir, { signal: S });
+  addEventListener('pointermove', function (e) { tx = e.clientX / W - 0.5; ty = e.clientY / H - 0.5; }, { passive: true, signal: S });
+  addEventListener('deviceorientation', function (e) { if (e.gamma != null) { tx = Math.max(-0.5, Math.min(0.5, e.gamma / 60)); ty = Math.max(-0.5, Math.min(0.5, (e.beta - 45) / 90)); } }, { passive: true, signal: S });
+  document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden) { t0 = performance.now(); raf = requestAnimationFrame(frame); } }, { signal: S });
   medir(); raf = requestAnimationFrame(frame);
 })();

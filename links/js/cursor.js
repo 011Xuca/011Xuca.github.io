@@ -15,20 +15,23 @@
     dpr = Math.min(devicePixelRatio || 1, 2); W = root.clientWidth; H = root.clientHeight; // sin la barra de scroll
     cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-  addEventListener('resize', medir); medir();
+  var ac = new AbortController(), S = ac.signal; // al apagar se quitan todos los listeners
+  addEventListener('resize', medir, { signal: S }); medir();
   addEventListener('pointermove', function (e) {
     if (e.pointerType && e.pointerType !== 'mouse') return;
     mx = e.clientX; my = e.clientY;
     if (rx < 0) { rx = mx; ry = my; }
     root.classList.add('cursor-on');
     ring.classList.toggle('grande', !!(e.target.closest && e.target.closest('a, button, [role="button"], .np')));
-  }, { passive: true });
-  document.addEventListener('mouseleave', function () { root.classList.remove('cursor-on'); });
-  addEventListener('pointerdown', function () { ring.classList.add('click'); });
-  addEventListener('pointerup', function () { ring.classList.remove('click'); });
+  }, { passive: true, signal: S });
+  document.addEventListener('mouseleave', function () { root.classList.remove('cursor-on'); }, { signal: S });
+  addEventListener('pointerdown', function () { ring.classList.add('click'); }, { signal: S });
+  addEventListener('pointerup', function () { ring.classList.remove('click'); }, { signal: S });
   function frame(t) {
     // fondo.js agrega .sin-gpu si el equipo va lento sin aceleracion: se vuelve al cursor normal
-    if (root.classList.contains('sin-gpu')) { root.classList.remove('cursor-custom', 'cursor-on'); cv.remove(); ring.remove(); dot.remove(); return; }
+    if (root.classList.contains('sin-gpu')) { ac.abort(); root.classList.remove('cursor-custom'); // vuelve el cursor normal y el custom se desvanece
+      [cv, ring, dot].forEach(function (el) { el.style.transition = 'opacity .6s'; el.style.setProperty('opacity', '0', 'important'); });
+      setTimeout(function () { cv.remove(); ring.remove(); dot.remove(); root.classList.remove('cursor-on'); }, 700); return; }
     var dt = Math.min(0.05, (t - ult) / 1000 || 0); ult = t;
     var pulso = parseFloat(root.style.getPropertyValue('--pulso')) || 0;
     rx += (mx - rx) * 0.4; ry += (my - ry) * 0.4; // el rombo sigue con poca inercia
@@ -54,6 +57,6 @@
     }
     raf = requestAnimationFrame(frame);
   }
-  document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden) raf = requestAnimationFrame(frame); });
+  document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden) raf = requestAnimationFrame(frame); }, { signal: S });
   raf = requestAnimationFrame(frame);
 })();
