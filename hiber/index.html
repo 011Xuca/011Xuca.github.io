@@ -18,6 +18,7 @@
 <script defer src="../assets/js/ads.js?v=21"></script>
 <script defer src="../assets/js/motion.js?v=22"></script>
 <script defer src="../assets/js/repos.js?v=21"></script>
+<script defer src="../assets/js/hiber-dl.js?v=1"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1804493682737411"
      crossorigin="anonymous"></script>
 </head>
@@ -116,7 +117,7 @@
         <h2 data-en="Three steps">Tres pasos</h2>
       </div>
       <div class="steps">
-        <div class="step"><h3 data-en="Install it">Instalala</h3><p data-en="Download the folder and load it in your browser (steps below). It takes a minute.">Bajá la carpeta y cargala en tu navegador (los pasos están abajo). Es un minuto.</p></div>
+        <div class="step"><h3 data-en="Install it">Instalala</h3><p data-en="Download the zip for your browser and load it (steps below). It takes a minute.">Bajá el zip de tu navegador y cargalo (los pasos están abajo). Es un minuto.</p></div>
         <div class="step"><h3 data-en="Pick a level">Elegí un nivel</h3><p data-en="Click the Hiber icon and choose Chill, Normal, Full or Phone.">Tocá el ícono de Hiber y elegí Tranqui, Normal, A fondo o Celu.</p></div>
         <div class="step"><h3 data-en="Forget about it">Y olvidate</h3><p data-en="Tabs fall asleep and ads disappear by themselves.">Las pestañas se duermen y los anuncios desaparecen solos.</p></div>
       </div>
@@ -131,15 +132,21 @@
         <p data-en="For now it installs as an unpacked extension: <b>free and with no accounts</b>.">Por ahora se instala como extensión descomprimida: <b>gratis y sin cuentas</b>.</p>
       </div>
       <div class="ctas left">
-        <a class="btn main" href="https://github.com/011Xuca/hiber/archive/refs/heads/main.zip">
+        <a class="btn main" id="dl-hiber" href="https://github.com/011Xuca/hiber/releases/latest">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
           <span data-en="Download Hiber (.zip)">Descargar Hiber (.zip)</span>
         </a>
         <a class="btn" href="https://github.com/011Xuca/hiber#readme" target="_blank" rel="noopener" data-en="Read the guide">Leer la guía</a>
       </div>
+      <p style="margin:14px 0 0;opacity:.85"><span data-en="Detected browser:">Navegador detectado:</span> <b id="nav-detectado">…</b>
+        · <span data-en="Other browser:">Otro navegador:</span>
+        <a data-nav="chrome" href="https://github.com/011Xuca/hiber/releases/latest">Chrome</a> ·
+        <a data-nav="edge" href="https://github.com/011Xuca/hiber/releases/latest">Edge</a> ·
+        <a data-nav="opera" href="https://github.com/011Xuca/hiber/releases/latest">Opera</a> ·
+        <a data-nav="firefox" href="https://github.com/011Xuca/hiber/releases/latest">Firefox</a></p>
       <div class="how" style="margin-top:22px">
         <p data-en="<b>Chrome, Edge, Brave, Opera, Vivaldi:</b> unzip the file, open <code>chrome://extensions</code> (or <code>edge://</code>, <code>brave://</code>, <code>opera://</code>), turn on <b>Developer mode</b>, click <b>Load unpacked</b> and pick the folder."><b>Chrome, Edge, Brave, Opera, Vivaldi:</b> descomprimí el archivo, abrí <code>chrome://extensions</code> (o <code>edge://</code>, <code>brave://</code>, <code>opera://</code>), activá <b>Developer mode</b>, tocá <b>Load unpacked</b> (en Opera, <b>Cargar descomprimida</b>) y elegí la carpeta.</p>
-        <p data-en="<b>Firefox 128+:</b> run <code>node build-firefox.js</code>, open <code>about:debugging#/runtime/this-firefox</code> and use <b>Load Temporary Add-on…</b> on <code>firefox/manifest.json</code>. It is temporary: it goes away when you close Firefox."><b>Firefox 128 o más:</b> corré <code>node build-firefox.js</code>, abrí <code>about:debugging#/runtime/this-firefox</code> y usá <b>Load Temporary Add-on…</b> con <code>firefox/manifest.json</code>. Es temporal: se borra al cerrar Firefox.</p>
+        <p data-en="<b>Firefox 128+:</b> open <code>about:debugging#/runtime/this-firefox</code>, use <b>Load Temporary Add-on…</b> and pick the Firefox zip (or, unzipped, its <code>manifest.json</code>). It is temporary: it goes away when you close Firefox."><b>Firefox 128 o más:</b> abrí <code>about:debugging#/runtime/this-firefox</code>, usá <b>Load Temporary Add-on…</b> y elegí el zip de Firefox (o, descomprimido, su <code>manifest.json</code>). Es temporal: se borra al cerrar Firefox.</p>
         <p data-en="YouTube changes its code often, so the ad blocking there can stop working until Hiber is updated.">YouTube cambia su código seguido, así que el bloqueo de anuncios ahí puede dejar de andar hasta que se actualice Hiber.</p>
       </div>
     </div>
