@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://011xuca.github.io/sitemap.xml

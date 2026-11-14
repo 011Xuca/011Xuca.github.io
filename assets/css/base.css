@@ -37,7 +37,9 @@ a { color: inherit; }
 img { max-width: 100%; }
 p { margin: 0; }
 h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
-h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.02em; }
+.skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--op); color: var(--op-ink); padding: 8px 14px; border-radius: 6px; }
+.skip:focus { top: 8px; }
+h2, .head h1 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.02em; }
 h3 { font-size: 1.05rem; }
 .op { color: var(--op); font-weight: 800; }
 :focus-visible { outline: 2px solid var(--op); outline-offset: 3px; border-radius: 6px; }

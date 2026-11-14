@@ -2,9 +2,20 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script defer src="../assets/js/consent.js"></script>
+<meta name="theme-color" content="#121316">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hiber</title>
 <meta name="description" content="Extensión gratis para Chrome, Edge, Brave, Opera y Firefox: duerme las pestañas que no usás, bloquea anuncios (YouTube incluido) y recorta RAM, CPU y red.">
+<link rel="canonical" href="https://011xuca.github.io/hiber/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hiber">
+<meta property="og:description" content="Extensión gratis para Chrome, Edge, Brave, Opera y Firefox: duerme las pestañas que no usás, bloquea anuncios (YouTube incluido) y recorta RAM, CPU y red.">
+<meta property="og:url" content="https://011xuca.github.io/hiber/">
+<meta property="og:image" content="https://011xuca.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://011xuca.github.io/assets/og.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="icon" href="../assets/hiber.png?v=1" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
@@ -21,8 +32,10 @@
 <script defer src="../assets/js/hiber-dl.js?v=1"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1804493682737411"
      crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hiber", "description": "Extensión gratis para Chrome, Edge, Brave, Opera y Firefox: duerme las pestañas que no usás, bloquea anuncios (YouTube incluido) y recorta RAM, CPU y red.", "url": "https://011xuca.github.io/hiber/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows, macOS, Linux", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "011Xuca"}}</script>
 </head>
 <body class="p-hib" data-title-en="Hiber">
+<a class="skip" href="#main">Saltar al contenido</a>
 <aside class="ad-side izq" data-ad="izq" hidden aria-label="Publicidad"><span class="ad-label">Publicidad</span><div class="ad"></div></aside>
 <aside class="ad-side der" data-ad="der" hidden aria-label="Publicidad"><span class="ad-label">Publicidad</span><div class="ad"></div></aside>
 
@@ -47,7 +60,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="hero"><div class="backdrop" aria-hidden="true"></div>
     <div class="wrap">
       <img class="hero-ic" src="../assets/hiber.png" alt="Hiber" width="80" height="80">
@@ -63,7 +76,7 @@
           <span data-en="Install">Instalar</span>
         </a>
         <a class="btn" href="https://github.com/011Xuca/hiber" target="_blank" rel="noopener" data-en="View on GitHub">Ver en GitHub</a>
-        <a class="btn discord link-discord" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg><span data-en="Join Discord">Unite al Discord</span></a>
+        <a class="btn discord link-discord" href="https://discord.gg/FwYuKkTuXZ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg><span data-en="Join Discord">Unite al Discord</span></a>
       </div>
     </div>
   </section>
@@ -166,8 +179,9 @@
         <h4 data-en="Community">Comunidad</h4>
         <ul>
           <li><a href="https://github.com/011Xuca" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a class="link-discord" href="#" target="_blank" rel="noopener">Discord</a></li>
+          <li><a class="link-discord" href="https://discord.gg/FwYuKkTuXZ" target="_blank" rel="noopener">Discord</a></li>
           <li><a href="../links/" data-en="All my socials">Todas mis redes</a></li>
+          <li><a href="mailto:xuca.info@proton.me" data-en="Contact">Contacto</a></li>
         </ul>
       </div>
       <div class="pie-col">
