@@ -6,8 +6,9 @@
 
   function cargar() {
     if (window.__trk) return; window.__trk = 1;
-    var s = d.createElement('script'); s.async = 1; s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-549G8GL6'; d.head.appendChild(s);
-    window.dataLayer = window.dataLayer || []; window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    var s = d.createElement('script'); s.async = 1; s.src = 'https://www.googletagmanager.com/gtag/js?id=G-KW3R4QP10D'; d.head.appendChild(s);
+    window.dataLayer = window.dataLayer || []; window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date()); gtag('config', 'G-KW3R4QP10D');
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
       t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
