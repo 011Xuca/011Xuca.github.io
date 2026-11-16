@@ -12,6 +12,13 @@ body.inicio .hero .wrap { justify-items: center; text-align: center; padding-blo
 .insignia .sep { opacity: .5; }
 .insignia b { font-variant-numeric: tabular-nums; color: var(--fg); }
 .insignia .con-descargas { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Esqueletos de carga: el número de GitHub reserva su ancho (hasta "999k") y brilla suave mientras llega; si falla queda un guion */
+.n-estrellas, .n-descargas { display: inline-block; min-width: 4ch; text-align: center; }
+.n-estrellas:empty, .n-descargas:empty, .sk { min-height: 1.1em; vertical-align: middle; border-radius: 4px; background: linear-gradient(90deg, var(--line) 30%, color-mix(in srgb, var(--line) 40%, var(--card)) 50%, var(--line) 70%) 0 0 / 300% 100%; animation: brillo 1.6s ease-in-out infinite; }
+.cfg.sk { min-height: 78px; border: 0; }
+@keyframes brillo { from { background-position: 100% 0; } to { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .n-estrellas:empty, .n-descargas:empty, .sk { animation: none; } }
 .punto { width: 7px; height: 7px; border-radius: 50%; background: var(--op); }
 
 /* Secciones: se alternan dos fondos de la paleta del producto */
@@ -22,9 +29,10 @@ main > section:nth-of-type(even) { background: var(--bg-2); border-block: 1px so
 .eyebrow { font: 600 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--op); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; }
-.feat { display: grid; gap: 8px; align-content: start; padding: 20px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); }
+.feat { display: grid; grid-template-columns: auto 1fr; gap: 10px 12px; align-items: center; align-content: start; padding: 20px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); }
 .feat .ic { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; color: var(--op); background: color-mix(in srgb, var(--op) 14%, transparent); }
 .feat .ic svg { width: 20px; height: 20px; }
+.feat > :not(.ic):not(h3) { grid-column: 1 / -1; }
 .feat p, .step p, .leg p, .cfg p, .proj p { color: var(--muted); font-size: .93rem; }
 
 .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; counter-reset: paso; }

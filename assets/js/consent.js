@@ -27,17 +27,39 @@
     return (l || (navigator.language || 'es')).toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
   }
 
-  function banner() {
+  function banner(abierto) {
+    if (d.getElementById('cb')) return;
     var es = idioma() === 'es', priv = (d.querySelector('link[rel=canonical]') ? 'https://011xuca.github.io/privacidad/' : 'privacidad/');
     var st = d.createElement('style');
     st.textContent = '#cb{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:560px;margin:0 auto;background:#1E2025;color:#F2F3F5;border:1px solid #2B2E35;border-radius:12px;padding:16px;font:14px/1.5 system-ui,sans-serif;box-shadow:0 8px 30px #0008}#cb p{margin:0 0 12px}#cb a{color:#22D3EE}#cb div{display:flex;gap:8px;flex-wrap:wrap}#cb button{font:600 14px system-ui,sans-serif;padding:10px 18px;min-height:44px;border-radius:8px;border:1px solid #22D3EE;cursor:pointer;background:transparent;color:#F2F3F5}#cb button.si{background:#22D3EE;color:#04222A}#cb button:focus-visible{outline:2px solid #fff;outline-offset:2px}';
-    d.head.appendChild(st);
+    st.id = 'cb-st'; if (!d.getElementById('cb-st')) d.head.appendChild(st);
     var b = d.createElement('div'); b.id = 'cb'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', es ? 'Cookies' : 'Cookies');
     b.innerHTML = '<p>' + (es ? 'Uso Google Analytics, Microsoft Clarity y Meta Pixel para saber cómo se usa el sitio. Solo cargan si aceptás. ' : 'I use Google Analytics, Microsoft Clarity and Meta Pixel to understand how the site is used. They only load if you accept. ') + '<a href="' + priv + '">' + (es ? 'Más info' : 'More info') + '</a></p><div><button class="si" type="button">' + (es ? 'Aceptar' : 'Accept') + '</button><button class="no" type="button">' + (es ? 'Rechazar' : 'Reject') + '</button></div>';
     b.querySelector('.si').onclick = function () { guardar('si'); b.remove(); cargar(); };
-    b.querySelector('.no').onclick = function () { guardar('no'); b.remove(); };
+    b.querySelector('.no').onclick = function () {
+      guardar('no'); b.remove();
+      if (window.__trk) { borrarCookies(); location.reload(); } // ya cargadas: borrar lo propio y recargar para que dejen de correr
+    };
     d.body.appendChild(b);
+    if (abierto === true) b.querySelector('.si').focus(); // solo si lo abrió el usuario desde el pie
   }
+
+  // Cookies propias de Analytics (_ga*), Clarity (_clck, _clsk) y Meta (_fbp); las de dominios de terceros no se pueden borrar desde acá
+  function borrarCookies() {
+    d.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (/^(_ga|_gid|_clck|_clsk|_fbp)/.test(n)) {
+        [location.hostname, '.' + location.hostname, ''].forEach(function (dom) {
+          d.cookie = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (dom ? '; domain=' + dom : '');
+        });
+      }
+    });
+  }
+
+  // "Cookies" en el pie: vuelve a mostrar el aviso para cambiar la elección
+  d.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('[data-cookies]')) banner(true);
+  });
 
   var v = leer();
   if (v === 'si') cargar(); else if (v !== 'no') { if (d.body) banner(); else d.addEventListener('DOMContentLoaded', banner); }

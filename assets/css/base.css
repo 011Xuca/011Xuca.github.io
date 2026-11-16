@@ -10,24 +10,30 @@
   --mono: "JetBrains Mono", Consolas, "Cascadia Mono", monospace;
   color-scheme: dark;
 }
-/* Producto: Xuca OPtimizer */
+/* Producto: Brío */
 body.p-op { --bg: #0D1520; --bg-2: #122030; --card: #162739; --line: #24384D; }
-/* Producto: Xuca Monitor */
-body.p-mon { --bg: #100F1C; --bg-2: #171628; --card: #1D1C32; --line: #2E2C4A; }
+/* Producto: Pulso (acento verde = color del icono de la app; .proj.mon es su tarjeta en el inicio) */
+body.p-mon { --bg: #0D1510; --bg-2: #111C15; --card: #13211A; --line: #26402F; }
+body.p-mon, .proj.mon { --op: #4ADE80; --op-ink: #052E16; }
 
-/* Producto: Hiber */
-body.p-hib { --bg: #0C1618; --bg-2: #112224; --card: #152A2D; --line: #234347; }
+/* Producto: Hiber (acento violeta claro = borde y glifo del icono; grafito como el fondo del icono; .proj-hib es su tarjeta en el inicio) */
+body.p-hib { --bg: #131219; --bg-2: #18171F; --card: #1E1C27; --line: #2E2B3A; }
+body.p-hib, .proj-hib { --op: #A78BFA; --op-ink: #1E1238; }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) { --bg: #F4F5F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D9DCE2; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E; --op: #0E7490; --op-ink: #fff; --yellow: #A16207; --magenta: #7E22CE; --red: #B91C1C; color-scheme: light; }
   :root:not([data-theme="dark"]) body.p-op { --bg: #EAF1F8; --bg-2: #F8FBFE; --card: #FFFFFF; --line: #CCDAE8; }
-  :root:not([data-theme="dark"]) body.p-hib { --bg: #E8F3F2; --bg-2: #F6FBFA; --card: #FFFFFF; --line: #C9E0DE; }
-  :root:not([data-theme="dark"]) body.p-mon { --bg: #EFEEF8; --bg-2: #F9F9FE; --card: #FFFFFF; --line: #D7D5EA; }
+  :root:not([data-theme="dark"]) body.p-hib { --bg: #F4F2FA; --bg-2: #FAF9FD; --card: #FFFFFF; --line: #DEDAEB; --muted: #4E5762; }
+  :root:not([data-theme="dark"]) body.p-hib, :root:not([data-theme="dark"]) .proj-hib { --op: #6D28D9; --op-ink: #fff; }
+  :root:not([data-theme="dark"]) body.p-mon { --bg: #F0F7F2; --bg-2: #F6FBF7; --card: #FFFFFF; --line: #CFE3D5; }
+  :root:not([data-theme="dark"]) body.p-mon, :root:not([data-theme="dark"]) .proj.mon { --op: #15803D; --op-ink: #fff; }
 }
 :root[data-theme="light"] { --bg: #F4F5F7; --bg-2: #FFFFFF; --card: #FFFFFF; --line: #D9DCE2; --fg: #1A1D23; --muted: #5F6672; --soft: #3A414E; --op: #0E7490; --op-ink: #fff; --yellow: #A16207; --magenta: #7E22CE; --red: #B91C1C; color-scheme: light; }
 :root[data-theme="light"] body.p-op { --bg: #EAF1F8; --bg-2: #F8FBFE; --card: #FFFFFF; --line: #CCDAE8; }
-:root[data-theme="light"] body.p-hib { --bg: #E8F3F2; --bg-2: #F6FBFA; --card: #FFFFFF; --line: #C9E0DE; }
-:root[data-theme="light"] body.p-mon { --bg: #EFEEF8; --bg-2: #F9F9FE; --card: #FFFFFF; --line: #D7D5EA; }
+:root[data-theme="light"] body.p-hib { --bg: #F4F2FA; --bg-2: #FAF9FD; --card: #FFFFFF; --line: #DEDAEB; --muted: #4E5762; }
+:root[data-theme="light"] body.p-hib, :root[data-theme="light"] .proj-hib { --op: #6D28D9; --op-ink: #fff; }
+:root[data-theme="light"] body.p-mon { --bg: #F0F7F2; --bg-2: #F6FBF7; --card: #FFFFFF; --line: #CFE3D5; }
+:root[data-theme="light"] body.p-mon, :root[data-theme="light"] .proj.mon { --op: #15803D; --op-ink: #fff; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -40,7 +46,7 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance;
 .skip { position: absolute; left: 8px; top: -60px; z-index: 100; background: var(--op); color: var(--op-ink); padding: 8px 14px; border-radius: 6px; }
 .skip:focus { top: 8px; }
 h2, .head h1 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.02em; }
-h3 { font-size: 1.05rem; }
+h3 { font-size: 1.2rem; }
 .op { color: var(--op); font-weight: 800; }
 :focus-visible { outline: 2px solid var(--op); outline-offset: 3px; border-radius: 6px; }
 .wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }

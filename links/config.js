@@ -54,7 +54,7 @@ window.LINKTREE = {
   // Tipos: link (default) | header (título de grupo) | divider (línea)
   // Opciones de link: title, desc (texto de la vista previa al pasar el mouse), tags (etiquetas chicas), cta (texto del botón de la vista previa), preview (imagen), url, subtitle, icon, badge ("NUEVO"), featured (más grande), image (tarjeta grande con foto)
   links: [
-    { title: 'Página Web', desc: 'Acá están Xuca OPtimizer y Xuca Monitor, mis apps gratuitas para Windows, con guías y descargas.', tags: ['Apps gratis', 'Windows 10/11'], cta: 'Entrar al sitio', url: 'https://011xuca.github.io/', icon: 'link' },
+    { title: 'Página Web', desc: 'Acá están Brío y Pulso, mis apps gratuitas para Windows, con guías y descargas.', tags: ['Apps gratis', 'Windows 10/11'], cta: 'Entrar al sitio', url: 'https://011xuca.github.io/', icon: 'katana' },
     { title: 'Donativo por Ko-fi 💙', desc: 'Si mis apps te sirvieron, podés invitarme un cafecito. Es voluntario y me ayuda a seguir creando cosas gratis.', tags: ['Voluntario', 'Gracias 💙'], cta: 'Invitar un cafecito', url: 'https://ko-fi.com/011xuca', icon: 'kofi' },
     { title: 'Nuestro servidor de Discord', desc: 'Charlá con la comunidad, enterate de las novedades de mis apps y pedí ayuda cuando la necesites.', tags: ['Comunidad', 'Gratis'], cta: 'Unirme al servidor', url: 'https://discord.com/invite/FwYuKkTuXZ', icon: 'discord' /* , image: 'assets/discord.png' */ },
     { title: 'Twitch', desc: 'Mis directos. Seguime para enterarte cuando salga en vivo.', cta: 'Ver el canal', url: 'https://www.twitch.tv/011xuca', icon: 'twitch' },

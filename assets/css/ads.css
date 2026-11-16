@@ -11,3 +11,7 @@
 .ad-side.izq { right: calc(50% + 560px + 20px); }
 .ad-side.der { left: calc(50% + 560px + 20px); }
 @media (min-width: 1500px) { .ad-side { display: block; } }
+/* Mientras el anuncio llega, el hueco reservado se ve como esqueleto; si Google no tiene anuncio para mostrar, el bloque entero se oculta */
+.ad { border-radius: 8px; background: color-mix(in srgb, var(--line) 45%, transparent); }
+.ad:has(ins[data-ad-status="filled"]) { background: none; }
+.ad-bottom:has(ins[data-ad-status="unfilled"]), .ad-side:has(ins[data-ad-status="unfilled"]) { display: none; }

@@ -22,7 +22,7 @@
 .btn svg { width: 18px; height: 18px; }
 .btn.main { background: var(--op); color: var(--op-ink); border-color: var(--op); }
 .btn.main:hover { filter: brightness(1.08); }
-.btn.kofi { background: #29ABE0; border-color: #29ABE0; color: #fff; }
+.btn.kofi { background: #29ABE0; border-color: #29ABE0; color: #04222A; }
 .btn.discord { background: #5865F2; border-color: #5865F2; color: #fff; }
 .btn.chico { padding: 7px 14px; font-size: .88rem; }
 .btn.chico svg { width: 15px; height: 15px; }
@@ -38,6 +38,9 @@ footer { background: var(--bg-2); border-top: 1px solid var(--line); padding-blo
 .pie-col a:hover { color: var(--op); }
 .pie-apoyo { display: flex; flex-wrap: wrap; gap: 10px; }
 .pie-apoyo .btn { color: var(--fg); }
-.pie-apoyo .btn.kofi { color: #fff; }
-.copy-linea { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; font-size: .85rem; }
+.pie-apoyo .btn.kofi { color: #04222A; }
+.copy-linea { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; margin-top: 20px; font-size: .85rem; }
+.copy-linea a, .link-cookies { padding-block: 4px; }
+.link-cookies { font: inherit; color: inherit; background: none; border: 0; padding-inline: 0; text-decoration: underline; cursor: pointer; }
+.links a[aria-current="page"] { color: var(--fg); }
 .katana-mini { width: 16px; height: 16px; flex: none; }

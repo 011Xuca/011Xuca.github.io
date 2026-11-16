@@ -1,0 +1,68 @@
+/* Guías y páginas de texto (sobre mí, contacto, FAQ, legal, privacidad). Reusa tokens y componentes de base/chrome/sections. */
+
+/* Acento de Brío (azul cielo), el mismo que usa su página; Pulso e Hiber ya lo tienen en base.css */
+body.p-op, .proj-brio { --op: #60A5FA; --op-ink: #0B1B33; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) body.p-op, :root:not([data-theme="dark"]) .proj-brio { --op: #1D4ED8; --op-ink: #FFFFFF; } }
+:root[data-theme="light"] body.p-op, :root[data-theme="light"] .proj-brio { --op: #1D4ED8; --op-ink: #FFFFFF; }
+
+.angosto { max-width: 800px; }
+
+/* Cabeceras */
+.pag-head { padding-block: 56px 8px; }
+.pag-head .head { margin-bottom: 0; max-width: none; }
+.pag-head h1, .art-head h1 { font-size: clamp(1.9rem, 4.6vw, 2.7rem); letter-spacing: -0.02em; }
+.lead { color: var(--muted); font-size: 1.12rem; }
+.art-head { padding-block: 48px 8px; }
+.art-head .wrap { display: grid; gap: 14px; }
+.migas { font-size: .88rem; color: var(--muted); }
+.migas a { color: var(--muted); padding-block: 4px; }
+.migas a:hover { color: var(--op); }
+.art-meta { color: var(--muted); font-size: .9rem; }
+.art-meta a { color: var(--fg); }
+
+/* Texto largo */
+.prosa { padding-block: 16px 48px; font-size: 1.05rem; line-height: 1.7; }
+section .prosa { padding-block: 0; }
+.prosa > * + * { margin-top: 1em; }
+.prosa h2 { margin-top: 2.2em; font-size: clamp(1.4rem, 3vw, 1.75rem); scroll-margin-top: 80px; }
+.prosa > h2:first-child { margin-top: 0; }
+.prosa h3 { margin-top: 1.6em; font-size: 1.18rem; }
+.prosa ul, .prosa ol { padding-left: 1.3em; margin-bottom: 0; }
+.prosa li + li { margin-top: .45em; }
+.prosa a { color: var(--op); text-underline-offset: 2px; }
+.prosa a.btn { color: inherit; text-decoration: none; }
+.prosa a.btn.main { color: var(--op-ink); }
+.prosa code, .bloque-cod { font-family: var(--mono); font-size: .88em; background: var(--card); border: 1px solid var(--line); border-radius: 4px; }
+.prosa code { padding: 1px 6px; }
+.bloque-cod { padding: 12px 16px; overflow-x: auto; line-height: 1.6; }
+.bloque-cod code { background: none; border: 0; padding: 0; font-size: 1em; }
+
+.tabla { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.tabla table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.tabla caption { text-align: left; padding: 12px 14px 4px; font-weight: 700; }
+.tabla th, .tabla td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid var(--line); }
+.tabla th { background: var(--card); }
+
+.aviso, .nota { padding: 14px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); }
+.aviso { border-color: color-mix(in srgb, var(--yellow) 55%, var(--line)); background: color-mix(in srgb, var(--yellow) 8%, var(--card)); }
+
+.indice { padding: 16px 20px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); font-size: .97rem; }
+.indice ol { margin-top: .5em; }
+.indice a { color: var(--fg); }
+.indice a:hover { color: var(--op); }
+
+.app-cta { display: grid; grid-template-columns: auto 1fr; gap: 14px 16px; align-items: center; margin-top: 2.2em; padding: 20px; border-radius: 12px; background: var(--card); border: 1px solid color-mix(in srgb, var(--op) 45%, var(--line)); }
+.app-cta img { width: 48px; height: 48px; border-radius: 12px; }
+.app-cta p { color: var(--muted); font-size: .97rem; margin-top: 4px; }
+.app-cta .ctas { grid-column: 1 / -1; }
+.art-pie { color: var(--muted); font-size: .95rem; border-top: 1px solid var(--line); padding-top: 1.2em; margin-top: 2.2em !important; }
+
+/* Tarjetas de guías: el título va como h3 directo (sin ícono) */
+.proj h3 { font-size: 1.15rem; }
+
+/* Preguntas frecuentes */
+.faq { border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+.faq + .faq { margin-top: 10px; }
+.faq summary { cursor: pointer; padding: 14px 18px; font-weight: 700; min-height: 44px; }
+.faq summary:hover { color: var(--op); }
+.faq p { padding: 0 18px 16px; color: var(--soft); }

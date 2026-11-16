@@ -15,6 +15,7 @@
     if (!box || configs === null) return;
     var en = idioma() === 'en';
     box.innerHTML = '';
+    box.removeAttribute('aria-busy');
     if (configs === 'error' || configs.length === 0) {
       var p = document.createElement('p');
       p.className = 'cfg-empty';
@@ -39,6 +40,11 @@
       box.appendChild(a);
     });
   }
+  // fetch con tope de 8 s: si GitHub no responde, el esqueleto pasa a un guion en vez de quedar cargando para siempre
+  function traer(url) {
+    var op = window.AbortSignal && AbortSignal.timeout ? { signal: AbortSignal.timeout(8000) } : {};
+    return fetch(url, op).then(function (r) { if (!r.ok) throw 0; return r.json(); });
+  }
   function descargas() {
     var cd = document.querySelector('.con-descargas');
     if (!cd) return;
@@ -46,21 +52,19 @@
     var fuente = cd.dataset.releases
       ? 'https://api.github.com/repos/011Xuca/' + cd.dataset.releases + '/releases?per_page=100'
       : 'https://abacus.jasoncameron.dev/get/011xuca/xuca-optimizer-instalaciones';
-    fetch(fuente)
-      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    traer(fuente)
       .then(function (d) {
         var n = 0;
         if (cd.dataset.releases) d.forEach(function (rel) { (rel.assets || []).forEach(function (a) { n += a.download_count || 0; }); });
         else n = (d && d.value) || 0;
         cd.querySelector('.n-descargas').textContent = corto(n);
       })
-      .catch(function () {});
+      .catch(function () { cd.querySelector('.n-descargas').textContent = '—'; });
   }
   document.addEventListener('DOMContentLoaded', function () {
     var est = document.querySelectorAll('.n-estrellas');
     if (document.getElementById('lista-configs') || est.length) {
-      fetch('https://api.github.com/users/011Xuca/repos?per_page=100')
-        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      traer('https://api.github.com/users/011Xuca/repos?per_page=100')
         .then(function (d) {
           var propios = d.filter(function (r) { return !r.fork; });
           configs = propios.filter(function (r) { return /-Config$/i.test(r.name); })
@@ -72,7 +76,7 @@
             el.textContent = corto(n);
           });
         })
-        .catch(function () { configs = 'error'; pintarConfigs(); est.forEach(function (el) { el.textContent = '★'; }); });
+        .catch(function () { configs = 'error'; pintarConfigs(); est.forEach(function (el) { el.textContent = '—'; }); });
     }
     descargas();
   });

@@ -5,21 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Página no encontrada · 011Xuca</title>
-<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/base.css?v=22">
+<link rel="icon" href="/assets/logo.svg?v=3" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/base.css?v=25">
+<link rel="stylesheet" href="/assets/css/chrome.css?v=23">
+<script src="/assets/js/ui.js?v=21"></script>
 <style>
 main{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px}
 .n{font:800 clamp(5rem,20vw,10rem)/1 var(--display);color:var(--op);letter-spacing:-.04em}
-p{color:var(--muted);margin:12px 0 24px}
-.b{display:inline-block;background:var(--op);color:var(--op-ink);font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none}
+main p{color:var(--muted);margin:12px 0 24px}
+.ir{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
 </style>
 </head>
-<body class="inicio">
+<body class="inicio" data-title-en="Page not found · 011Xuca">
 <main id="main"><div>
-<div class="n">404</div>
-<h1 style="font-size:1.6rem">Esta página no existe</h1>
-<p>Puede que el link esté mal o que la hayan movido.</p>
-<a class="b" href="/">Volver al inicio</a>
+<div class="n" aria-hidden="true">404</div>
+<h1 style="font-size:1.6rem" data-en="This page does not exist">Esta página no existe</h1>
+<p data-en="The link may be wrong or the page may have moved. These might help:">Puede que el link esté mal o que la página se haya movido. Quizás te sirve alguno de estos:</p>
+<div class="ir">
+  <a class="btn main" href="/" data-en="Home">Inicio</a>
+  <a class="btn" href="/guias/" data-en="Guides">Guías</a>
+  <a class="btn" href="/pulse/">Pulso</a>
+  <a class="btn" href="/brio/">Brío</a>
+  <a class="btn" href="/hiber/">Hiber</a>
+  <a class="btn" href="/preguntas-frecuentes/" data-en="FAQ">Preguntas frecuentes</a>
+  <a class="btn" href="/contacto/" data-en="Contact">Contacto</a>
+</div>
 </div></main>
 </body>
 </html>
