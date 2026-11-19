@@ -94,7 +94,19 @@
     var falta = Math.max(0, ANUNCIO.segundos - (performance.now() - inicio) / 1000);
     num.textContent = Math.ceil(falta);
     barra.style.transform = 'scaleX(' + (1 - falta / ANUNCIO.segundos) + ')';
-    if (falta <= 0) terminar(true);
+    if (falta <= 0) { if (objetivo.matches('.copy')) listo(); else terminar(true); }
+  }
+
+  // Copiar al portapapeles sin un clic reciente hace que el navegador pida permiso (y parece sospechoso):
+  // al terminar la cuenta se pide un clic, y esa copia sale de ese clic. Las descargas siguen solas.
+  function listo() {
+    clearInterval(timer); timer = 0;
+    modo = 'listo';
+    barra.style.transform = 'scaleX(1)';
+    tit.textContent = txt('Listo: ya podés copiar el comando', 'Done: you can copy the command now');
+    dlg.querySelector('#anuncio-desc').textContent = txt('Tocá el botón para copiarlo.', 'Tap the button to copy it.');
+    var si = dlg.querySelector('[data-a="si"]');
+    si.textContent = txt('Copiar comando', 'Copy command'); si.style.display = ''; si.focus();
   }
 
   // ¿Hay un bloqueador? Señuelo con clases típicas + pedido a AdSense. Sin conexión no se acusa a nadie.
@@ -171,4 +183,16 @@
     e.stopPropagation();
     abrir(el);
   }, true);
+  // Copiar el comando a mano (seleccionarlo y Ctrl+C o "Copiar" del menú del click derecho) también pasa por el anuncio.
+  // shortcut: arrastrar el texto seleccionado a otra parte no dispara "copy" y no se cubre.
+  document.addEventListener('copy', function (e) {
+    if (dlg && dlg.open) return;
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed) return;
+    var cmd = [].slice.call(document.querySelectorAll('code[id^="cmd-"]')).filter(function (c) { return sel.containsNode(c, true); })[0];
+    var btn = cmd && document.querySelector('.copy[data-copy="' + cmd.id + '"]');
+    if (!btn) return;
+    e.preventDefault(); // no se copia nada ahora: el botón copia el comando completo al terminar el anuncio
+    abrir(btn);
+  });
 })();
