@@ -59,7 +59,7 @@
     dlg.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-a]');
       if (!b) return;
-      if (modo === 'muro' && b.dataset.a === 'si') return comprobar(); // "Ya lo desactivé"
+      if (modo === 'muro' && b.dataset.a === 'si') return location.reload(); // "Ya lo desactivé": recarga para que el bloqueador ya apagado se note
       terminar(b.dataset.a === 'si');
     });
     dlg.addEventListener('close', limpiar); // también cubre Esc y el gesto de volver
@@ -71,7 +71,7 @@
     dlg.classList.toggle('muro', modo === 'muro');
     if (modo === 'muro') {
       tit.textContent = txt('Quitá tu bloqueador de anuncios para continuar', 'Turn off your ad blocker to continue');
-      dlg.querySelector('#anuncio-desc').textContent = txt('Los anuncios mantienen estas apps gratis. Desactivá el bloqueador en esta página, recargala y volvé a tocar el botón.', 'Ads keep these apps free. Turn the blocker off on this page, reload it and tap the button again.');
+      dlg.querySelector('#anuncio-desc').textContent = txt('Los anuncios mantienen estas apps gratis. Desactivá el bloqueador en esta página y tocá "Ya lo desactivé": la página se recarga.', 'Ads keep these apps free. Turn the blocker off on this page and tap "I turned it off": the page reloads.');
       dlg.querySelector('.anuncio-chip').textContent = txt('Bloqueador detectado', 'Ad blocker detected');
       dlg.querySelector('[data-a="no"]').textContent = txt('Cancelar', 'Cancel');
       dlg.querySelector('[data-a="si"]').textContent = txt('Ya lo desactivé', 'I turned it off');
@@ -120,13 +120,6 @@
     if (oculto) return Promise.resolve(true);
     return fetch('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?bait=' + Date.now(), { mode: 'no-cors', cache: 'no-store' })
       .then(function () { return false; }, function () { return true; });
-  }
-
-  function comprobar() {
-    bloqueado().then(function (si) {
-      if (!dlg.open || !objetivo) return;
-      if (!si) { modo = 'anuncio'; textos(); empezar(); }
-    });
   }
 
   function abrir(el) {

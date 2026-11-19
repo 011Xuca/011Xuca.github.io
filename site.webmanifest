@@ -1,1 +1,29 @@
-{"name": "011Xuca", "short_name": "011Xuca", "start_url": "/", "display": "browser", "background_color": "#121316", "theme_color": "#121316", "icons": [{"src": "/assets/logo.svg", "sizes": "any", "type": "image/svg+xml"}]}
+{
+ "name": "011Xuca · Apps gratis y guías para tu PC",
+ "short_name": "011Xuca",
+ "start_url": "/",
+ "display": "browser",
+ "background_color": "#121316",
+ "theme_color": "#121316",
+ "icons": [
+  {
+   "src": "/assets/logo.svg",
+   "sizes": "any",
+   "type": "image/svg+xml"
+  },
+  {
+   "src": "/assets/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/assets/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ],
+ "description": "Apps gratis para Windows y el navegador (Brío, Pulso e Hiber) y guías de rendimiento para PC.",
+ "lang": "es",
+ "scope": "/",
+ "id": "/"
+}
