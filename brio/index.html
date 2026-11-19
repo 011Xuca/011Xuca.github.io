@@ -2,30 +2,39 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<script defer src="../assets/js/consent.js?v=3"></script>
+<script defer src="../assets/js/consent.js?v=4"></script>
 <meta name="theme-color" content="#121316">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Brío: optimizador gratis de Windows para jugar</title>
-<meta name="description" content="Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Aplica solo lo que va con tu PC, mide tus FPS antes y después con PresentMon y casi todo se deshace con un toque.">
+<meta name="description" content="Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Detecta si es notebook o PC de escritorio y si tu Windows ya viene recortado, aplica perfiles en un clic, te deja elegir qué apps, servicios y programas de inicio tocar, y casi todo se deshace con un toque.">
+<meta name="keywords" content="optimizador Windows gratis, optimizar Windows 11 para jugar, debloat Windows 11, quitar bloatware, más FPS, Modo Nitro, QuickCPU, TimerResolution, desactivar VBS, integridad de memoria, limpiar arranque, apagar servicios, quitar Edge, quitar OneDrive, Brío">
 <link rel="canonical" href="https://011xuca.github.io/brio/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Brío: optimizador gratis de Windows para jugar">
-<meta property="og:description" content="Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Aplica solo lo que va con tu PC, mide tus FPS antes y después con PresentMon y casi todo se deshace con un toque.">
+<meta property="og:description" content="Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Detecta si es notebook o PC de escritorio y si tu Windows ya viene recortado, aplica perfiles en un clic, te deja elegir qué apps, servicios y programas de inicio tocar, y casi todo se deshace con un toque.">
 <meta property="og:url" content="https://011xuca.github.io/brio/">
+<meta property="og:image" content="https://011xuca.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="011Xuca: Brío, Pulso e Hiber, apps gratis para tu PC">
 <meta property="og:site_name" content="011Xuca">
 <meta property="og:locale" content="es_AR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Brío: optimizador gratis de Windows para jugar">
+<meta name="twitter:description" content="Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Detecta si es notebook o PC de escritorio y si tu Windows ya viene recortado, aplica perfiles en un clic, te deja elegir qué apps, servicios y programas de inicio tocar, y casi todo se deshace con un toque.">
+<meta name="twitter:image" content="https://011xuca.github.io/assets/og.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="icon" href="../assets/brio.ico?v=3" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="../assets/css/base.css?v=25">
-<link rel="stylesheet" href="../assets/css/chrome.css?v=23">
-<link rel="stylesheet" href="../assets/css/sections.css?v=23">
+<link rel="stylesheet" href="../assets/css/chrome.css?v=24">
+<link rel="stylesheet" href="../assets/css/sections.css?v=24">
 <link rel="stylesheet" href="../assets/css/ads.css?v=23">
-<link rel="stylesheet" href="../assets/css/backdrops.css?v=23">
-<link rel="stylesheet" href="../assets/css/motion.css?v=23">
+<link rel="stylesheet" href="../assets/css/backdrops.css?v=24">
+<link rel="stylesheet" href="../assets/css/motion.css?v=24">
+<link rel="stylesheet" href="../assets/css/anuncio.css?v=1b">
 <style>
 /* Acento propio de Brío: azul cielo (#60A5FA en oscuro, #1D4ED8 en claro), el mismo de la app y distinto del cian de la portada y de Hiber */
 body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
@@ -35,10 +44,12 @@ body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
 <script src="../assets/js/ui.js?v=21"></script>
 <script defer src="../assets/js/ads.js?v=21"></script>
 <script defer src="../assets/js/motion.js?v=22"></script>
+<script defer src="../assets/js/anuncio.js?v=1b"></script>
 <script defer src="../assets/js/repos.js?v=22"></script>
+<script defer src="../assets/js/version.js?v=1"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1804493682737411"
      crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Brío", "description": "Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Aplica solo lo que va con tu PC, mide tus FPS antes y después con PresentMon y casi todo se deshace con un toque.", "url": "https://011xuca.github.io/brio/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Windows", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "name": "011Xuca"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Brío", "alternateName": "Brio", "softwareVersion": "1.0.13", "applicationCategory": "UtilitiesApplication", "applicationSubCategory": "Optimizador de Windows para gaming", "operatingSystem": "Windows 10, Windows 11", "downloadUrl": "https://github.com/011Xuca/brio/archive/refs/heads/main.zip", "installUrl": "https://011xuca.github.io/brio/#instalar", "image": "https://011xuca.github.io/assets/brio.ico", "releaseNotes": "https://github.com/011Xuca/brio/blob/main/CHANGELOG.md", "sameAs": ["https://github.com/011Xuca/brio"], "featureList": ["Perfiles en un clic (Seguro, Competitivo, RAM liviana, notebook, Full Optimizado)", "Limpiar arranque, Borrar apps y Apagar servicios con lista para elegir qué tocar", "Detección de notebook y de Windows recortado", "Modo Nitro (QuickCPU), Temporizador del sistema (TimerResolution), Desactivar VBS e integridad de memoria", "Actualizar a Windows 11 26H2, Escanear y reparar Windows, Destrabar teclado, Cuenta local sin Microsoft", "Casi todo se deshace con Restablecer"], "description": "Brío: optimizador gratis para Windows 10 y 11 que deja tu PC lista para jugar. Detecta si es notebook o PC de escritorio y si tu Windows ya viene recortado, aplica perfiles en un clic, te deja elegir qué apps, servicios y programas de inicio tocar, y casi todo se deshace con un toque.", "url": "https://011xuca.github.io/brio/", "inLanguage": ["es", "en"], "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "author": {"@type": "Person", "@id": "https://011xuca.github.io/sobre-mi/#xuca", "name": "Xuca", "alternateName": "011Xuca", "url": "https://011xuca.github.io/sobre-mi/"}}</script>
 </head>
 <body class="p-op" data-title-en="Brío: free Windows optimizer for gaming">
 <a class="skip" href="#main">Saltar al contenido</a>
@@ -77,8 +88,8 @@ body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
         <span class="sep">·</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg><b class="n-estrellas" data-repo="brio"></b><span data-en="stars">estrellas</span>
         <span class="con-descargas"><span class="sep">·</span><b class="n-descargas"></b><span data-en="downloads">descargas</span></span>
       </a>
-      <h1 data-en="Your PC ready to play, with &lt;em&gt;the FPS measured&lt;/em&gt;.">Tu PC lista para jugar, y <em>con los FPS medidos</em>.</h1>
-      <p class="lead" data-en="Brío reads your Windows before touching anything: it shows what is already applied and greys out what does not fit your PC. Tick what you want or pick a profile (Competitive, Light RAM, laptop...), hit Apply and measure your average FPS and 1% lows before and after with PresentMon, so you can see whether anything really changed. It offers a restore point first and almost everything can be undone with Reset.">Brío lee tu Windows antes de tocar nada: te muestra qué ya está aplicado y deja en gris lo que no va con tu PC. Marcás lo que querés o elegís un perfil (Competitivo, RAM liviana, para notebook...), tocás Aplicar y medís tus FPS promedio y 1% low antes y después con PresentMon, así ves si de verdad cambió algo. Antes te ofrece un punto de restauración y casi todo se vuelve atrás con Restablecer.</p>
+      <h1 data-en="Your PC ready to play, &lt;em&gt;in one click&lt;/em&gt;.">Tu PC lista para jugar, <em>en un clic</em>.</h1>
+      <p class="lead" data-en="Brío reads your Windows before touching anything: it shows what is already applied and greys out what does not fit your PC. It knows whether it is a laptop or a desktop and whether your Windows is already stripped down (Tiny11, AtlasOS, ReviOS...), so it does not touch what it should not. Tick what you want or pick a profile (Competitive, Light RAM, laptop...) and it is applied in one click. Clean startup, Remove apps and Turn off services open a list so you pick exactly what to touch. It offers a restore point first and almost everything can be undone with Reset.">Brío lee tu Windows antes de tocar nada: te muestra qué ya está aplicado y deja en gris lo que no va con tu PC. Sabe si es notebook o PC de escritorio y si tu Windows ya viene recortado (Tiny11, AtlasOS, ReviOS...), así no toca lo que no debe. Marcás lo que querés o elegís un perfil (Competitivo, RAM liviana, para notebook...) y se aplica en un clic. Limpiar arranque, Borrar apps y Apagar servicios te abren una lista para elegir exactamente qué tocar. Antes te ofrece un punto de restauración y casi todo se vuelve atrás con Restablecer.</p>
       <div class="ctas">
         <a class="btn main" href="#instalar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
@@ -101,17 +112,17 @@ body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
         <div class="feat" style="--c: var(--op)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
           <h3 data-en="Profiles">Perfiles</h3>
-          <p data-en="Ready-made combos applied with one click: Safe (basic debloat with no risk), Optimized, Competitive (the most FPS without touching security), Light RAM, Minimum RAM, two for laptops and Full Optimized. The ones that turn off the antivirus warn you first.">Combos listos que se aplican con un toque: Seguro (debloat básico sin riesgo), Optimizado, Competitivo (lo que más FPS da sin tocar la seguridad), RAM liviana, RAM mínima, dos para notebook y Full Optimizado. Los que apagan el antivirus te avisan antes.</p>
+          <p data-en="Ready-made combos applied with one click: Safe (basic debloat with no risk), Optimized, Competitive (the most FPS without touching security), Light RAM, Minimum RAM, two for laptops and Full Optimized. They apply in one click with no questions; if a profile needs drivers you are missing, it is not applied until you install them. The ones that turn off the antivirus warn you first.">Combos listos que se aplican con un toque: Seguro (debloat básico sin riesgo), Optimizado, Competitivo (lo que más FPS da sin tocar la seguridad), RAM liviana, RAM mínima, dos para notebook y Full Optimizado. Se aplican en un clic y sin preguntas; si al perfil le faltan drivers, no se aplica hasta que los instales. Los que apagan el antivirus te avisan antes.</p>
         </div>
         <div class="feat" style="--c: var(--sky)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg></span>
           <h3 data-en="Debloat and privacy">Debloat y privacidad</h3>
-          <p data-en="Removes ads, suggestions, Bing in search, telemetry, Widgets, Windows AI and Recall, and deletes junk apps. It also turns off startup apps and services almost nobody uses.">Saca publicidad, sugerencias, Bing en el buscador, telemetría, Widgets, la IA de Windows y Recall, y borra apps basura. También apaga apps de inicio y servicios que casi nadie usa.</p>
+          <p data-en="Removes ads, suggestions, Bing in search, telemetry, Widgets, Windows AI and Recall, and removes junk apps (OneDrive, Edge and Bing included). Clean startup, Remove apps and Turn off services open a list with an icon, a short description and a label for each item: safe to remove, driver or peripheral, or protected by Windows.">Saca publicidad, sugerencias, Bing en el buscador, telemetría, Widgets, la IA de Windows y Recall, y borra apps basura (OneDrive, Edge y Bing incluidos). Limpiar arranque, Borrar apps y Apagar servicios te abren una lista con icono, descripción corta y una etiqueta por cada cosa: seguro de quitar, driver o periférico, o protegida por Windows.</p>
         </div>
         <div class="feat" style="--c: var(--green)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 13.5h.01"/></svg></span>
-          <h3 data-en="Gaming optimization">Optimización gaming</h3>
-          <p data-en="Mouse without acceleration, CPU priority and affinity for your games, power plan, minimum timer, no Game DVR recording, hardware-accelerated GPU scheduling, MPO, network card power saving and faster DNS.">Mouse sin aceleración, prioridad y afinidad de CPU para tus juegos, plan de energía, temporizador al mínimo, sin grabación de Game DVR, GPU acelerada por hardware, MPO, ahorro de energía de la placa de red y DNS más rápido.</p>
+          <h3 data-en="Gamer zone">Zona gamer</h3>
+          <p data-en="Mouse without acceleration, CPU priority and affinity for your games, power plan, minimum timer, no Game DVR recording, hardware-accelerated GPU scheduling, MPO, network card power saving and faster DNS. Favorites with ⭐: Nitro Mode (aka QuickCPU), System timer (aka TimerResolution), Turn off the antivirus, Disable memory integrity and Disable VBS.">Mouse sin aceleración, prioridad y afinidad de CPU para tus juegos, plan de energía, temporizador al mínimo, sin grabación de Game DVR, GPU acelerada por hardware, MPO, ahorro de energía de la placa de red y DNS más rápido. Favoritas con ⭐: Modo Nitro (aka QuickCPU), Temporizador del sistema (aka TimerResolution), Apagar el antivirus, Desactivar integridad de memoria y Desactivar VBS.</p>
         </div>
         <div class="feat" style="--c: var(--pink)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15"/></svg></span>
@@ -121,7 +132,7 @@ body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
         <div class="feat" style="--c: var(--magenta)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
           <h3 data-en="Tools and drivers">Herramientas y drivers</h3>
-          <p data-en="Find drivers opens the official page of whatever is missing (it installs nothing). It also measures your FPS before and after with PresentMon, downloaded from its official repo and verified, and includes BIOS tips, updating Windows and signing in without a password.">Buscar drivers te abre la página oficial de lo que falta (no instala nada). También mide tus FPS antes y después con PresentMon, que se baja de su repo oficial y se verifica, y trae ajustes de BIOS, actualizar Windows y entrar sin contraseña.</p>
+          <p data-en="Find drivers opens the official page of whatever is missing (it installs nothing). It also brings BIOS tips for your board, Update to Windows 11 26H2 (no black window: it first fixes what blocks the update), Scan and repair Windows (DISM + SFC), Unstick keyboard (Ctrl + Alt + K), Local account without Microsoft and signing in without a password.">Buscar drivers te abre la página oficial de lo que falta (no instala nada). También trae ajustes de BIOS para tu placa, Actualizar a Windows 11 26H2 (sin ventana negra: antes arregla lo que impide actualizar), Escanear y reparar Windows (DISM + SFC), Destrabar teclado (Ctrl + Alt + K), Cuenta local sin Microsoft y entrar sin contraseña.</p>
         </div>
         <div class="feat" style="--c: var(--lime)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span>
@@ -145,7 +156,7 @@ body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
       </div>
       <div class="steps">
         <div class="step"><h3 data-en="Pick a section">Elegí una sección</h3><p data-en="If you don't know where to start, go to Profiles.">Si no sabés por dónde empezar, andá a Perfiles.</p></div>
-        <div class="step"><h3 data-en="Tick what you want">Marcá lo que quieras</h3><p data-en="Click anywhere on an option. What you tick in Debloat and Gaming is applied together.">Tocá cualquier parte de una opción. Lo que marques en Debloat y en Gaming se aplica junto.</p></div>
+        <div class="step"><h3 data-en="Tick what you want">Marcá lo que quieras</h3><p data-en="Click anywhere on an option. What you tick in Debloat and Gamer zone is applied together.">Tocá cualquier parte de una opción. Lo que marques en Debloat y en Zona gamer se aplica junto.</p></div>
         <div class="step"><h3 data-en="Hit Apply">Tocá Aplicar</h3><p data-en="First it offers to create a restore point, just in case.">Antes te ofrece crear un punto de restauración, por las dudas.</p></div>
       </div>
     </div>
@@ -173,12 +184,13 @@ body.p-op { --op: #60A5FA; --op-ink: #0B2533; }
       </div>
       <div class="grid">
         <div class="feat"><h3 data-en="You can undo it">Se puede deshacer</h3><p data-en="Select the option and press Reset selected: it goes back to the Windows default. Before applying it offers a restore point. The few with no way back (like removing languages or accessibility apps) tell you so.">Marcás la opción y tocás Restablecer seleccionadas: vuelve al valor que trae Windows. Antes de aplicar te ofrece un punto de restauración. Las pocas que no tienen vuelta atrás (como borrar idiomas o las apps de accesibilidad) te lo avisan.</p></div>
+        <div class="feat"><h3 data-en="It does not break your Windows">No te rompe Windows</h3><p data-en="No option can turn off what Windows activation uses, so a local account does not end up as &quot;not genuine&quot;, and if an old version had turned it off, it fixes itself. It flags the options that can block the 26H2 update, does not touch Snipping Tool or Win + Shift + S, and at the end shows a summary of what it applied, the space freed and what no longer starts with Windows.">Ninguna opción puede apagar lo que usa la activación de Windows, así una cuenta local no queda como "no original", y si una versión vieja lo había apagado se arregla solo. Marca las opciones que pueden impedir actualizar a 26H2, no toca Recortes ni Win + Shift + S, y al final te muestra un resumen de lo aplicado, el espacio liberado y lo que ya no arranca con Windows.</p></div>
         <div class="feat"><h3 data-en="Windows 10 and 11 (and 7 and 8.1)">Windows 10 y 11 (y 7 y 8.1)</h3><p data-en="It reads your version and greys out what does not fit, for example Recall (Windows 11 24H2 on a Copilot+ PC) or End task on the taskbar (Windows 11 22H2). Windows 7 SP1 and 8.1 get basic support with WMF 5.1: options that rely on Windows 10 things, like Store apps, Defender, BitLocker, scheduled tasks or per-adapter DNS, show up greyed out.">Lee tu versión y deja en gris lo que no va, por ejemplo Recall (Windows 11 24H2 en una PC Copilot+) o Finalizar tarea en la barra (Windows 11 22H2). En Windows 7 SP1 y 8.1 tiene soporte básico con WMF 5.1: ahí quedan en gris las opciones que usan cosas de Windows 10, como apps de la Store, Defender, BitLocker, tareas programadas o el DNS por placa.</p></div>
         <div class="feat"><h3 data-en="Requirements">Requisitos</h3><p data-en="PowerShell 5.1 (already included in Windows 10 and 11) and administrator permissions, which the app asks for when it opens. Nothing else to install.">PowerShell 5.1 (ya viene en Windows 10 y 11) y permisos de administrador, que la app pide al abrirse. No hace falta instalar nada más.</p></div>
         <div class="feat"><h3 data-en="It updates itself">Se actualiza sola</h3><p data-en="When it opens it compares its version with the one on GitHub and shows a banner. If you accept, it downloads everything, checks nothing is broken, replaces the files and reopens. If something fails halfway, it leaves everything as it was.">Al abrirse compara su versión con la de GitHub y te avisa con un cartel. Si aceptás, baja todo, revisa que no venga roto, reemplaza los archivos y se vuelve a abrir. Si algo falla a mitad de camino, deja todo como estaba.</p></div>
         <div class="feat"><h3 data-en="Fullscreen games">Juegos en pantalla completa</h3><p data-en="It works: almost everything is system-wide and applies in fullscreen, windowed and borderless. Fullscreen optimizations are turned off only for the games it detects, and hardware-accelerated GPU and the modern mode help in windowed and borderless.">Sirve: casi todo es de sistema y vale en pantalla completa, en ventana y sin bordes. Las optimizaciones de pantalla completa se apagan solo en los juegos que detecta, y la GPU acelerada y el modo moderno ayudan en ventana y sin bordes.</p></div>
         <div class="feat"><h3 data-en="It does not keep running">No queda corriendo</h3><p data-en="It applies the changes and that is it. Only CPU affinity, the timer and RAM cleaning leave a small program in the background, and only if you turn them on.">Aplica los cambios y listo. Solo la afinidad de CPU, el temporizador y la limpieza de RAM dejan un programita en segundo plano, y solo si los activás.</p></div>
-        <div class="feat"><h3 data-en="Privacy">Privacidad</h3><p data-en="It sends none of your data. It connects to GitHub to check for a new version and for the configs list, and reads a public install counter (the installer adds one, with no data). PresentMon and Hiber are downloaded only if you ask.">No manda datos tuyos. Se conecta a GitHub para ver si hay una versión nueva y para la lista de configs, y lee un contador público de instalaciones (el instalador le suma uno, sin datos). PresentMon y Hiber se bajan solo si los pedís.</p></div>
+        <div class="feat"><h3 data-en="Privacy">Privacidad</h3><p data-en="It sends none of your data. It connects to GitHub to check for a new version and for the configs list, and reads a public install counter (the installer adds one, with no data). Hiber is downloaded only if you ask.">No manda datos tuyos. Se conecta a GitHub para ver si hay una versión nueva y para la lista de configs, y lee un contador público de instalaciones (el instalador le suma uno, sin datos). Hiber se baja solo si lo pedís.</p></div>
       </div>
     </div>
   </section>

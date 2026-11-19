@@ -12,7 +12,12 @@
 <meta property="og:title" content="Cómo preparar Windows para jugar: modo juego, energía, HAGS, MPO y pantalla completa · 011Xuca">
 <meta property="og:description" content="Qué hacen el modo juego, el plan de energía, la programación de GPU acelerada por hardware (HAGS), el MPO y la pantalla completa frente a sin bordes, y cuándo conviene cada uno.">
 <meta property="og:url" content="https://011xuca.github.io/guias/preparar-windows-para-jugar/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://011xuca.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="011Xuca: Brío, Pulso e Hiber, apps gratis para tu PC">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://011xuca.github.io/assets/og.png">
 <meta name="twitter:title" content="Cómo preparar Windows para jugar: modo juego, energía, HAGS, MPO y pantalla completa · 011Xuca">
 <meta name="twitter:description" content="Qué hacen el modo juego, el plan de energía, la programación de GPU acelerada por hardware (HAGS), el MPO y la pantalla completa frente a sin bordes, y cuándo conviene cada uno.">
 <meta property="article:published_time" content="2026-11-16">
@@ -23,13 +28,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="../../assets/css/base.css?v=25">
-<link rel="stylesheet" href="../../assets/css/chrome.css?v=23">
-<link rel="stylesheet" href="../../assets/css/sections.css?v=23">
+<link rel="stylesheet" href="../../assets/css/chrome.css?v=24">
+<link rel="stylesheet" href="../../assets/css/sections.css?v=24">
 <link rel="stylesheet" href="../../assets/css/ads.css?v=23">
-<link rel="stylesheet" href="../../assets/css/motion.css?v=23">
+<link rel="stylesheet" href="../../assets/css/motion.css?v=24">
 <link rel="stylesheet" href="../../assets/css/articulos.css?v=1">
 <script src="../../assets/js/ui.js?v=21"></script>
-<script defer src="../../assets/js/consent.js?v=3"></script>
+<script defer src="../../assets/js/consent.js?v=4"></script>
 <script defer src="../../assets/js/motion.js?v=22"></script>
 <script defer src="../../assets/js/ads.js?v=21"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1804493682737411" crossorigin="anonymous"></script>
@@ -84,8 +89,8 @@
 <p data-en="Game Bar background recording, Discord or Steam overlays, a browser playing videos and launchers downloading updates all use resources while you play. You do not need to uninstall everything: close them or turn off what you do not use, and measure whether you notice a difference.">La grabación de fondo de la Game Bar, los overlays de Discord o Steam, el navegador con videos y los launchers descargando actualizaciones consumen recursos mientras jugás. No hace falta desinstalar todo: cerralos o apagá lo que no usás, y medí si notás diferencia.</p>
 <p class="aviso" data-en="&lt;b&gt;Measure every change.&lt;/b&gt; What improves one PC may change nothing (or make things worse) on another. Make one change at a time and compare with &lt;a href=&quot;../../guias/medir-fps-benchmark/&quot;&gt;a proper benchmark&lt;/a&gt;. And before you start, &lt;a href=&quot;../../guias/antes-de-optimizar-windows/&quot;&gt;create a restore point&lt;/a&gt;."><b>Medí cada cambio.</b> Lo que mejora una PC puede no cambiar nada (o empeorar) en otra. Hacé un cambio por vez y compará con <a href="../../guias/medir-fps-benchmark/">un benchmark bien hecho</a>. Y antes de empezar, <a href="../../guias/antes-de-optimizar-windows/">creá un punto de restauración</a>.</p>
 <h2 id="brio" data-en="With Brío">Con Brío</h2>
-<p data-en="Brío&#x27;s gaming optimization section includes Game Mode, the high performance plan, HAGS together with optimizations for windowed games, disabling MPO and per-game fullscreen optimizations, among others. Each option says what you gain and what you lose (for example, that disabling MPO only helps if you had flickering or black screens), detects whether it is already applied and can be reverted. From Tools you can measure your FPS before and after with PresentMon to see whether anything really changed on your PC.">La sección de optimización gaming de Brío incluye el modo juego, el plan de alto rendimiento, HAGS junto con las optimizaciones para juegos en ventana, la desactivación de MPO y de las optimizaciones de pantalla completa por juego, entre otras. Cada opción dice qué ganás y qué perdés (por ejemplo, que desactivar MPO solo sirve si tenías parpadeos o pantallas negras), detecta si ya está aplicada y se puede revertir. Desde Herramientas podés medir tus FPS antes y después con PresentMon para ver si de verdad cambió algo en tu PC.</p>
-<aside class="app-cta" aria-label="Brío"><img src="../../assets/brio.ico?v=3" alt="" width="48" height="48" loading="lazy" decoding="async"><div><b data-en="Brío">Brío</b><p data-en="Brío gathers these settings in its gaming section, explains the pros and cons of each, detects what you already have applied and can measure your FPS before and after with PresentMon.">Brío reúne estos ajustes en su sección de gaming, explica pros y contras de cada uno, detecta qué ya tenés aplicado y puede medir tus FPS antes y después con PresentMon.</p></div><div class="ctas"><a class="btn main" href="../../brio/" data-en="See Brío">Ver Brío</a></div></aside>
+<p data-en="Brío&#x27;s Gamer zone section includes Game Mode, the high performance plan, HAGS together with optimizations for windowed games, disabling MPO and per-game fullscreen optimizations, among others. Each option says what you gain and what you lose (for example, that disabling MPO only helps if you had flickering or black screens), detects whether it is already applied and can be reverted. To see whether anything really changed on your PC, record a session with Pulso before and after applying.">La sección Zona gamer de Brío incluye el modo juego, el plan de alto rendimiento, HAGS junto con las optimizaciones para juegos en ventana, la desactivación de MPO y de las optimizaciones de pantalla completa por juego, entre otras. Cada opción dice qué ganás y qué perdés (por ejemplo, que desactivar MPO solo sirve si tenías parpadeos o pantallas negras), detecta si ya está aplicada y se puede revertir. Para ver si de verdad cambió algo en tu PC, grabá una sesión con Pulso antes y después de aplicar.</p>
+<aside class="app-cta" aria-label="Brío"><img src="../../assets/brio.ico?v=3" alt="" width="48" height="48" loading="lazy" decoding="async"><div><b data-en="Brío">Brío</b><p data-en="Brío gathers these settings in its Gamer zone section, explains the pros and cons of each, detects what you already have applied and applies profiles in one click.">Brío reúne estos ajustes en su sección Zona gamer, explica pros y contras de cada uno, detecta qué ya tenés aplicado y aplica perfiles en un clic.</p></div><div class="ctas"><a class="btn main" href="../../brio/" data-en="See Brío">Ver Brío</a></div></aside>
 <p class="art-pie" data-en="Something wrong or outdated in this guide? Tell me through the &lt;a href=&quot;../../contacto/&quot;&gt;contact page&lt;/a&gt; and I will fix it.">¿Algo de esta guía está mal o quedó viejo? Avisame desde la <a href="../../contacto/">página de contacto</a> y lo corrijo.</p>
 </div>
 </article>

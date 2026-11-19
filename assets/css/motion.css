@@ -1,8 +1,9 @@
 /* Movimiento: entrada de la portada, aparecer al bajar, hover de tarjetas y botones. Todo se apaga con "reducir movimiento". */
 @keyframes sube { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @keyframes flota { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-@keyframes latido { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--op) 60%, transparent); } 100% { box-shadow: 0 0 0 7px transparent; } }
-@keyframes cruza { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+/* Todo lo que se repite se anima con transform/opacity: corre en el compositor y no repinta aunque no haya GPU */
+@keyframes latido { from { transform: scale(1); opacity: .6; } to { transform: scale(3); opacity: 0; } }
+@keyframes cruza { 0%, 55% { transform: translateX(-150%) skewX(-20deg); } 100% { transform: translateX(325%) skewX(-20deg); } }
 
 /* Portada: cada elemento entra de a uno */
 .hero > .wrap > * { animation: sube .7s cubic-bezier(.22, 1, .36, 1) both; }
@@ -11,8 +12,9 @@
 .hero > .wrap > :nth-child(4) { animation-delay: .24s; }
 .hero > .wrap > :nth-child(5) { animation-delay: .32s; }
 .hero > .wrap > .hero-ic { animation: sube .7s cubic-bezier(.22, 1, .36, 1) both, flota 5s ease-in-out .8s infinite; }
-.punto { animation: latido 2s ease-out infinite; }
-.top { animation: sube .5s ease both; transition: box-shadow .3s; }
+.punto { position: relative; }
+.punto::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--op); opacity: 0; animation: latido 2s ease-out infinite; }
+.top { animation: sube .5s ease both; }
 .top.bajo { box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .6); }
 
 /* Aparecer al bajar (la clase la ponen js/motion.js; sin JS todo se ve normal) */
@@ -20,7 +22,8 @@
 .js-anim .rev.ver { opacity: 1; transform: none; transition: opacity .55s ease, transform .6s cubic-bezier(.22, 1, .36, 1); transition-delay: var(--d, 0s); }
 
 /* Tarjetas */
-.feat, .step, .leg, .cfg, .proj { transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .2s, box-shadow .25s; }
+/* La sombra aparece de una (sin transición): animarla repinta la tarjeta en cada cuadro */
+.feat, .step, .leg, .cfg, .proj { transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .2s; }
 .feat:hover, .step:hover, .leg:hover, .cfg:hover, a.proj:hover { transform: translateY(-4px); border-color: var(--op); box-shadow: 0 16px 32px -20px var(--op); }
 .leg:hover { border-color: var(--c); box-shadow: 0 16px 32px -20px var(--c); }
 .feat .ic { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
@@ -31,10 +34,10 @@ a.proj:hover .proj-ic { transform: scale(1.08) rotate(-4deg); }
 .brand:hover img, .brand:hover svg { transform: rotate(-8deg) scale(1.1); }
 
 /* Botones: se alzan, brillo que cruza en el principal, onda al tocar */
-.btn, .icon-btn, .copy, .gh-btn { position: relative; overflow: hidden; transition: transform .2s cubic-bezier(.34, 1.56, .64, 1), background .15s, border-color .15s, filter .15s; }
+.btn, .icon-btn, .copy, .gh-btn { position: relative; overflow: hidden; transition: transform .2s cubic-bezier(.34, 1.56, .64, 1), background .15s, border-color .15s; }
 .btn:hover, .icon-btn:hover, .gh-btn:hover { transform: translateY(-2px); }
 .btn:active, .icon-btn:active, .copy:active { transform: scale(.96); }
-.btn.main::before { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; pointer-events: none; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent); transform: skewX(-20deg); animation: cruza 4s ease-in-out infinite; }
+.btn.main::before { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: 0; pointer-events: none; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent); transform: translateX(-150%) skewX(-20deg); animation: cruza 4s ease-in-out infinite; }
 .onda { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .4); transform: scale(0); animation: onda .6s ease-out forwards; pointer-events: none; }
 @keyframes onda { to { transform: scale(1); opacity: 0; } }
 .icon-btn svg { transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
@@ -53,4 +56,4 @@ a.proj:hover .proj-ic { transform: scale(1.08) rotate(-4deg); }
   .js-anim .rev { opacity: 1; transform: none; }
 }
 
-@media (hover: none) { .punto { animation: none; } }
+@media (hover: none) { .punto::after { animation: none; } }

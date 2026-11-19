@@ -45,7 +45,6 @@ main > section:nth-of-type(even) { background: var(--bg-2); border-block: 1px so
 .leg b { color: var(--c); }
 .leg-ic { margin-left: auto; color: var(--c); display: grid; }
 .leg-ic svg { width: 20px; height: 20px; }
-.leg.bloq p { opacity: .7; }
 
 .cmd { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 16px; border-radius: 8px; background: #0A0C10; border: 1px solid var(--line); color: #E8ECF2; margin-bottom: 20px; }
 .cmd::before { content: "PS>"; flex: none; font: 600 .9rem var(--mono); color: var(--op); }

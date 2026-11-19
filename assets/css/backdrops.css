@@ -2,7 +2,8 @@
    Inicio = puntos · Optimizer = circuito · Monitor = línea de pulso (se desliza sola). */
 .hero { position: relative; overflow: hidden; }
 .hero > .wrap { position: relative; z-index: 1; }
-.backdrop { position: absolute; inset: 0; background: var(--op); opacity: .2; pointer-events: none; }
+/* inset negativo: sobra una baldosa de cada lado, así el fondo se mueve con transform (compositor) y no repinta la máscara en cada cuadro */
+.backdrop { position: absolute; inset: -240px; background: var(--op); opacity: .2; pointer-events: none; }
 .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 40%, var(--bg)); }
 
 body.inicio .backdrop {
@@ -27,7 +28,7 @@ body.p-hib .backdrop {
 }
 /* En celu animar la máscara repinta toda la portada en cada cuadro: queda quieta */
 @media (hover: none) { body .backdrop { animation: none; } }
-@keyframes deriva-puntos{ to { -webkit-mask-position: 28px 28px; mask-position: 28px 28px; } }
-@keyframes deriva-circuito { to { -webkit-mask-position: 120px 120px; mask-position: 120px 120px; } }
-@keyframes deriva-pulso { to { -webkit-mask-position: -240px 0; mask-position: -240px 0; } }
-@keyframes deriva-luna { to { -webkit-mask-position: 110px 110px; mask-position: 110px 110px; } }
+@keyframes deriva-puntos { to { transform: translate(28px, 28px); } }
+@keyframes deriva-circuito { to { transform: translate(120px, 120px); } }
+@keyframes deriva-pulso { to { transform: translateX(-240px); } }
+@keyframes deriva-luna { to { transform: translate(110px, 110px); } }

@@ -2,30 +2,38 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<script defer src="assets/js/consent.js?v=3"></script>
+<script defer src="assets/js/consent.js?v=4"></script>
 <meta name="theme-color" content="#121316">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>011Xuca · Apps gratis y guías de rendimiento para tu PC</title>
 <meta name="description" content="Apps gratis de Xuca para Windows y el navegador (Pulso, Brío e Hiber) y guías prácticas para medir FPS, controlar temperaturas, diagnosticar lag y preparar Windows para jugar.">
+<meta name="keywords" content="apps gratis Windows, optimizar Windows para jugar, debloat Windows 11, monitor de PC, overlay FPS, bloqueador de anuncios, extensión navegador RAM, guías rendimiento PC, Brío, Pulso, Hiber">
 <link rel="canonical" href="https://011xuca.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="011Xuca · Apps gratis y guías de rendimiento para tu PC">
 <meta property="og:description" content="Apps gratis de Xuca para Windows y el navegador (Pulso, Brío e Hiber) y guías prácticas para medir FPS, controlar temperaturas, diagnosticar lag y preparar Windows para jugar.">
 <meta property="og:url" content="https://011xuca.github.io/">
+<meta property="og:image" content="https://011xuca.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="011Xuca: Brío, Pulso e Hiber, apps gratis para tu PC">
 <meta property="og:site_name" content="011Xuca">
 <meta property="og:locale" content="es_AR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="011Xuca · Apps gratis y guías de rendimiento para tu PC">
+<meta name="twitter:description" content="Apps gratis de Xuca para Windows y el navegador (Pulso, Brío e Hiber) y guías prácticas para medir FPS, controlar temperaturas, diagnosticar lag y preparar Windows para jugar.">
+<meta name="twitter:image" content="https://011xuca.github.io/assets/og.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="icon" href="assets/logo.svg?v=3" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="assets/css/base.css?v=25">
-<link rel="stylesheet" href="assets/css/chrome.css?v=23">
-<link rel="stylesheet" href="assets/css/sections.css?v=23">
+<link rel="stylesheet" href="assets/css/chrome.css?v=24">
+<link rel="stylesheet" href="assets/css/sections.css?v=24">
 <link rel="stylesheet" href="assets/css/ads.css?v=23">
-<link rel="stylesheet" href="assets/css/backdrops.css?v=23">
-<link rel="stylesheet" href="assets/css/motion.css?v=23">
+<link rel="stylesheet" href="assets/css/backdrops.css?v=24">
+<link rel="stylesheet" href="assets/css/motion.css?v=24">
 <style>
 /* Tarjeta de Brío: azul cielo de la app (#60A5FA en oscuro, #1D4ED8 en claro), distinto del cian de la portada y de Hiber */
 .proj-brio { --op: #60A5FA; --op-ink: #0B1B33; }
@@ -37,7 +45,7 @@
 <script defer src="assets/js/motion.js?v=22"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1804493682737411"
      crossorigin="anonymous"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "011Xuca", "url": "https://011xuca.github.io/", "inLanguage": "es", "author": {"@id": "https://011xuca.github.io/sobre-mi/#xuca"}}, {"@type": "Person", "@id": "https://011xuca.github.io/sobre-mi/#xuca", "name": "Xuca", "alternateName": "011Xuca", "url": "https://011xuca.github.io/sobre-mi/", "sameAs": ["https://github.com/011Xuca", "https://ko-fi.com/011xuca"]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "011Xuca", "url": "https://011xuca.github.io/", "inLanguage": "es", "author": {"@id": "https://011xuca.github.io/sobre-mi/#xuca"}}, {"@type": "Person", "@id": "https://011xuca.github.io/sobre-mi/#xuca", "name": "Xuca", "alternateName": "011Xuca", "url": "https://011xuca.github.io/sobre-mi/", "sameAs": ["https://github.com/011Xuca", "https://ko-fi.com/011xuca"]}, {"@type": "ItemList", "name": "Apps gratis de 011Xuca", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://011xuca.github.io/brio/", "name": "Brío"}, {"@type": "ListItem", "position": 2, "url": "https://011xuca.github.io/pulso/", "name": "Pulso"}, {"@type": "ListItem", "position": 3, "url": "https://011xuca.github.io/hiber/", "name": "Hiber"}]}]}</script>
 </head>
 <body class="inicio" data-title-en="011Xuca · Free apps and performance guides for your PC">
 <a class="skip" href="#main">Saltar al contenido</a>
@@ -88,17 +96,17 @@
         <a class="proj proj-brio" href="brio/">
           <span class="tag">Windows 10 / 11</span>
           <div class="proj-tit"><img class="proj-ic" src="assets/brio.ico?v=3" alt="" width="52" height="52" decoding="async"><h3>Brío</h3></div>
-          <p data-en="Gets your PC ready to play: debloat, privacy, gaming, cleanup and drivers in one app with checkboxes. Profiles like Competitive, FPS measured before and after with PresentMon, and almost everything can be undone.">Deja tu PC lista para jugar: debloat, privacidad, gaming, limpieza y drivers en una app con casillas. Perfiles como Competitivo, FPS medidos antes y después con PresentMon, y casi todo se deshace.</p>
+          <p data-en="Gets your PC ready to play: debloat, privacy, gaming, cleanup and drivers in one app with checkboxes. One-click profiles like Competitive, lists to pick exactly which apps, services and startup entries to touch, and almost everything can be undone.">Deja tu PC lista para jugar: debloat, privacidad, gaming, limpieza y drivers en una app con casillas. Perfiles en un clic como Competitivo, listas para elegir exactamente qué apps, servicios y programas de inicio tocar, y casi todo se deshace.</p>
         </a>
         <a class="proj mon" href="pulso/">
           <span class="tag">Windows 10 / 11</span>
           <div class="proj-tit"><img class="proj-ic" src="assets/pulso.ico" alt="" width="52" height="52" decoding="async"><h3>Pulso</h3></div>
-          <p data-en="Ideal for benchmarking: FPS overlay and a benchmark mode that saves every run, compares it with the previous one and tells you what problems it had. It also tells you what made your FPS drop, why your internet drops and why there was a blue screen.">Ideal para benchmarking: overlay de FPS y un modo benchmark que guarda cada corrida, la compara con la anterior y te dice qué problemas tuvo. Además te dice qué hizo bajar los FPS, por qué se corta internet y por qué hubo un pantallazo azul.</p>
+          <p data-en="Full monitoring of your PC: a performance overlay, a session recorder that finds your bottleneck, live ping and drive health. It also tells you what made your FPS drop, why your internet drops and why there was a blue screen.">Monitoreo integral de tu PC: overlay de rendimiento, un grabador de sesión que te dice cuál es el cuello de botella, ping en vivo y salud de los discos. Además te dice qué hizo bajar los FPS, por qué se corta internet y por qué hubo un pantallazo azul.</p>
         </a>
         <a class="proj proj-hib" href="hiber/">
           <span class="tag" data-en="Browser extension">Extensión de navegador</span>
           <div class="proj-tit"><img class="proj-ic" src="assets/hiber.png?v=2" alt="" width="52" height="52" decoding="async"><h3>Hiber</h3></div>
-          <p data-en="A lighter browser for modest PCs or for gaming and streaming with it open: it sleeps the tabs you don't use to free RAM, stops what burns CPU in the background and blocks ads, YouTube and Twitch included. Works on Chrome, Edge, Brave, Opera and Firefox.">Un navegador más liviano para PCs modestas o para jugar y streamear con él abierto: duerme las pestañas que no usás para liberar RAM, frena lo que gasta CPU de fondo y bloquea anuncios, incluidos los de YouTube y Twitch. Anda en Chrome, Edge, Brave, Opera y Firefox.</p>
+          <p data-en="A lighter browser for modest PCs or for gaming and streaming with it open: it sleeps the tabs you don't use to free RAM, stops what burns CPU in the background and blocks ads, YouTube, Twitch and Kick included. Works on Chrome, Edge, Brave, Opera and Firefox.">Un navegador más liviano para PCs modestas o para jugar y streamear con él abierto: duerme las pestañas que no usás para liberar RAM, frena lo que gasta CPU de fondo y bloquea anuncios, incluidos los de YouTube, Twitch y Kick. Anda en Chrome, Edge, Brave, Opera y Firefox.</p>
         </a>
       </div>
     </div>

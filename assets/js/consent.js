@@ -29,7 +29,7 @@
 
   function banner(abierto) {
     if (d.getElementById('cb')) return;
-    var es = idioma() === 'es', priv = (d.querySelector('link[rel=canonical]') ? 'https://011xuca.github.io/privacidad/' : 'privacidad/');
+    var es = idioma() === 'es', priv = '/privacidad/'; // raíz del sitio: anda igual en cualquier dominio y en local
     var st = d.createElement('style');
     st.textContent = '#cb{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:560px;margin:0 auto;background:#1E2025;color:#F2F3F5;border:1px solid #2B2E35;border-radius:12px;padding:16px;font:14px/1.5 system-ui,sans-serif;box-shadow:0 8px 30px #0008}#cb p{margin:0 0 12px}#cb a{color:#22D3EE}#cb div{display:flex;gap:8px;flex-wrap:wrap}#cb button{font:600 14px system-ui,sans-serif;padding:10px 18px;min-height:44px;border-radius:8px;border:1px solid #22D3EE;cursor:pointer;background:transparent;color:#F2F3F5}#cb button.si{background:#22D3EE;color:#04222A}#cb button:focus-visible{outline:2px solid #fff;outline-offset:2px}';
     st.id = 'cb-st'; if (!d.getElementById('cb-st')) d.head.appendChild(st);
