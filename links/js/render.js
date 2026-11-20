@@ -79,6 +79,7 @@
       if (!s.url) return; // red sin url todavía: no se muestra
       var a = el('a', 'social');
       a.href = seguro(s.url); a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('aria-label', s.type);
+      if (s.widget) a.dataset.widget = s.widget;
       a.appendChild(icono(s.type));
       so.appendChild(a);
     });
@@ -98,6 +99,7 @@
     try { a.dataset.host = new URL(it.url, location.href).hostname.replace(/^www\./, '') || 'este sitio'; } catch (e) { a.dataset.host = ''; }
     a.dataset.titulo = it.title; if (it.desc) a.dataset.desc = it.desc; if (it.preview) a.dataset.img = seguro(it.preview);
     a.dataset.icono = it.icon || 'link'; if (it.tags) a.dataset.tags = it.tags.join('|'); if (it.cta) a.dataset.cta = it.cta;
+    if (it.widget) a.dataset.widget = it.widget; // widget del servidor de Discord: vista previa y cuadro al hacer clic (js/widget.js)
     if (/^https?:/i.test(it.url)) { a.target = '_blank'; a.rel = 'noopener'; }
     if (it.image) { // tarjeta grande con imagen, como el Discord del Linktree
       var im = el('img', 'thumb'); im.src = seguro(it.image); im.alt = ''; im.loading = 'lazy';

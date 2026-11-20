@@ -2,7 +2,7 @@
 // Expone window.XUCA.idioma() y dispara el evento "idioma" para que otros scripts repinten sus textos.
 (function () {
   var root = document.documentElement;
-  var DISCORD = 'https://discord.gg/FwYuKkTuXZ'; // se actualiza en todos los botones
+  var DISCORD = 'https://discord.gg/QsQzJRYB7N'; // se actualiza en todos los botones
   function guardar(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function leer(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 

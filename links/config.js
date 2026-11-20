@@ -47,7 +47,7 @@ window.LINKTREE = {
     { type: 'instagram', url: 'https://www.instagram.com/011xuca/' },
     { type: 'tiktok', url: 'https://www.tiktok.com/@011xuca' },
     { type: 'twitch', url: 'https://www.twitch.tv/011xuca' },
-    { type: 'discord', url: 'https://discord.com/invite/FwYuKkTuXZ' },
+    { type: 'discord', url: 'https://discord.com/invite/QsQzJRYB7N', widget: '1093766638421155873' },
     { type: 'steam', url: 'https://steamcommunity.com/id/CRITICAL_PROCESS_DlED/' },
   ],
 
@@ -56,7 +56,7 @@ window.LINKTREE = {
   links: [
     { title: 'Página Web', desc: 'Acá están Brío y Pulso, mis apps gratuitas para Windows, con guías y descargas.', tags: ['Apps gratis', 'Windows 10/11'], cta: 'Entrar al sitio', url: 'https://011xuca.github.io/', icon: 'katana' },
     { title: 'Donativo por Ko-fi 💙', desc: 'Si mis apps te sirvieron, podés invitarme un cafecito. Es voluntario y me ayuda a seguir creando cosas gratis.', tags: ['Voluntario', 'Gracias 💙'], cta: 'Invitar un cafecito', url: 'https://ko-fi.com/011xuca', icon: 'kofi' },
-    { title: 'Nuestro servidor de Discord', desc: 'Charlá con la comunidad, enterate de las novedades de mis apps y pedí ayuda cuando la necesites.', tags: ['Comunidad', 'Gratis'], cta: 'Unirme al servidor', url: 'https://discord.com/invite/FwYuKkTuXZ', icon: 'discord' /* , image: 'assets/discord.png' */ },
+    { title: 'Nuestro servidor de Discord', desc: 'Charlá con la comunidad, enterate de las novedades de mis apps y pedí ayuda cuando la necesites.', tags: ['Comunidad', 'Gratis'], cta: 'Unirme al servidor', widget: '1093766638421155873', url: 'https://discord.com/invite/QsQzJRYB7N', icon: 'discord' /* , image: 'assets/discord.png' */ },
     { title: 'Twitch', desc: 'Mis directos. Seguime para enterarte cuando salga en vivo.', cta: 'Ver el canal', url: 'https://www.twitch.tv/011xuca', icon: 'twitch' },
     { title: 'TikTok', desc: 'Videos cortos y clips. ¡Pasá a ver!', cta: 'Ver el perfil', url: 'https://www.tiktok.com/@011xuca', icon: 'tiktok' },
     { title: 'Instagram', desc: 'Fotos y novedades del día a día.', cta: 'Ver el perfil', url: 'https://www.instagram.com/011xuca/', icon: 'instagram' },

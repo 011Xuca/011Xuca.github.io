@@ -14,17 +14,30 @@
     return s;
   }
 
+  // Widget de Discord: el iframe se crea una vez y no se mueve del DOM (si no, se recarga en cada hover)
+  var wf = null;
+  function widget(id) {
+    if (!wf) { wf = el('iframe', 'pv-w'); wf.title = 'Widget del servidor de Discord'; wf.tabIndex = -1; wf.sandbox = 'allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts'; wf.loading = 'lazy'; pv.appendChild(wf); }
+    var u = 'https://discord.com/widget?id=' + encodeURIComponent(id) + '&theme=dark';
+    if (wf.getAttribute('src') !== u) wf.src = u;
+    wf.hidden = false;
+  }
   function mostrar(btn) {
     var d = btn.dataset;
-    pv.textContent = '';
-    if (d.img) { var im = el('img', 'pv-img'); im.src = d.img; im.alt = ''; pv.appendChild(im); }
+    Array.prototype.slice.call(pv.children).forEach(function (c) { if (c !== wf) c.remove(); });
+    if (wf) wf.hidden = true;
+    function add(n) { pv.insertBefore(n, wf); } // siempre antes del iframe: el iframe queda último y no se mueve
+    if (d.img) { var im = el('img', 'pv-img'); im.src = d.img; im.alt = ''; add(im); }
     var cab = el('div', 'pv-cab');
     var ic = el('span', 'pv-ic'); ic.appendChild(icono(d.icono)); cab.appendChild(ic);
     var tt = el('div', 'pv-tt'); tt.appendChild(el('b', null, d.titulo)); tt.appendChild(el('small', null, d.host)); cab.appendChild(tt);
-    pv.appendChild(cab);
-    if (d.desc) pv.appendChild(el('p', 'pv-desc', d.desc));
-    if (d.tags) { var ch = el('div', 'pv-tags'); d.tags.split('|').forEach(function (t) { ch.appendChild(el('span', null, t)); }); pv.appendChild(ch); }
-    var cta = el('div', 'pv-cta'); cta.appendChild(el('span', null, d.cta || 'Abrir')); cta.appendChild(icono('arrow')); pv.appendChild(cta);
+    add(cab);
+    if (d.desc) add(el('p', 'pv-desc', d.desc));
+    if (d.widget) widget(d.widget); // con widget no hace falta el botón: el clic abre el cuadro (js/widget.js)
+    else {
+      if (d.tags) { var ch = el('div', 'pv-tags'); d.tags.split('|').forEach(function (t) { ch.appendChild(el('span', null, t)); }); add(ch); }
+      var cta = el('div', 'pv-cta'); cta.appendChild(el('span', null, d.cta || 'Abrir')); cta.appendChild(icono('arrow')); add(cta);
+    }
     pv.classList.add('on');
     var r = btn.getBoundingClientRect(), w = pv.offsetWidth, h = pv.offsetHeight, m = 14, L, T;
     if (r.right + m + w < innerWidth - 8) { L = r.right + m; T = r.top + r.height / 2 - h / 2; }       // a la derecha
