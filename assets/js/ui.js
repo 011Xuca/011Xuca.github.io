@@ -88,3 +88,5 @@
     });
   });
 })();
+// Widget de Discord en los botones de Discord: vive aparte en assets/js/discord-widget.js
+(function () { var s = document.currentScript; if (!s) return; var w = document.createElement('script'); w.src = s.src.replace(/ui\.js.*$/, 'discord-widget.js?v=1'); w.defer = true; document.head.appendChild(w); })();
