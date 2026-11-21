@@ -5,7 +5,7 @@
   var SRC = 'https://discord.com/widget?id=1093766638421155873&theme=dark';
   var SANDBOX = 'allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts';
   var CSS = '.dw-card{position:fixed;z-index:9998;width:300px;height:360px;border-radius:14px;overflow:hidden;background:#1e1f22;box-shadow:0 12px 40px rgba(0,0,0,.45);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s,visibility .15s}' +
-    '.dw-card.on{opacity:1;visibility:visible}' +
+    '.dw-card.on{opacity:1;visibility:visible;pointer-events:auto}' +
     '.dw-card iframe,.dw-dlg iframe{display:block;width:100%;height:100%;border:0}' +
     '.dw-dlg{width:min(350px,calc(100vw - 32px));padding:0;border:0;border-radius:18px;overflow:hidden;color:#fff;background:#1e1f22}' +
     '.dw-dlg::backdrop{background:rgba(0,0,0,.65)}' +
@@ -22,19 +22,23 @@
   // Tarjeta al pasar el mouse. El iframe se crea una vez y no se mueve (si no, se recarga).
   var card = null, actual = null, conMouse = matchMedia('(hover: hover) and (pointer: fine)').matches;
   function mostrar(a) {
-    if (!card) { card = el('div', 'dw-card'); card.setAttribute('aria-hidden', 'true'); var f = frame(); f.tabIndex = -1; card.appendChild(f); document.body.appendChild(card); }
+    if (!card) { card = el('div', 'dw-card'); var f = frame(); f.tabIndex = -1; card.appendChild(f); document.body.appendChild(card); }
     card.classList.add('on');
     var r = a.getBoundingClientRect(), w = card.offsetWidth, h = card.offsetHeight, m = 10;
     card.style.left = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width / 2 - w / 2)) + 'px';
     card.style.top = (r.bottom + m + h < innerHeight - 8 ? r.bottom + m : Math.max(8, r.top - h - m)) + 'px';
   }
-  function ocultar() { actual = null; if (card) card.classList.remove('on'); }
+  // Se cierra con una pausa: da tiempo a pasar el mouse del botón a la tarjeta (y se queda abierta mientras estés encima).
+  var t = null;
+  function cancelar() { clearTimeout(t); t = null; }
+  function ocultar() { cancelar(); actual = null; if (card) card.classList.remove('on'); }
+  function cerrarLuego() { cancelar(); t = setTimeout(ocultar, 450); }
   if (conMouse) {
     document.addEventListener('pointerover', function (e) {
       var a = boton(e) || null;
-      if (a === actual) return;
-      actual = a;
-      if (a) mostrar(a); else if (card) card.classList.remove('on');
+      if (a) { cancelar(); if (a !== actual) { actual = a; mostrar(a); } return; }
+      if (!actual) return;
+      if (card && card.contains(e.target)) cancelar(); else cerrarLuego();
     });
     document.addEventListener('scroll', ocultar, { passive: true });
   }

@@ -24,6 +24,7 @@
   }
   function mostrar(btn) {
     var d = btn.dataset;
+    pv.classList.toggle('pv-wid', !!d.widget); // con widget la tarjeta se puede tocar
     Array.prototype.slice.call(pv.children).forEach(function (c) { if (c !== wf) c.remove(); });
     if (wf) wf.hidden = true;
     function add(n) { pv.insertBefore(n, wf); } // siempre antes del iframe: el iframe queda último y no se mueve
@@ -45,11 +46,16 @@
     else { L = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width / 2 - w / 2)); T = r.top - h - m < 8 ? r.bottom + m : r.top - h - m; } // arriba o abajo
     pv.style.left = L + 'px'; pv.style.top = Math.max(8, Math.min(innerHeight - h - 8, T)) + 'px';
   }
+  // Con widget, cierra con una pausa y no se cierra mientras el mouse esté sobre la tarjeta (para poder usarla).
+  var t = null;
+  function cancelar() { clearTimeout(t); t = null; }
+  function ocultar() { cancelar(); actual = null; pv.classList.remove('on'); }
   document.addEventListener('pointerover', function (e) {
     var b = e.target.closest && e.target.closest('.btn[data-titulo]');
-    if (b === actual) return;
-    actual = b;
-    if (b) mostrar(b); else pv.classList.remove('on');
+    if (b) { cancelar(); if (b !== actual) { actual = b; mostrar(b); } return; }
+    if (!actual) return;
+    if (!actual.dataset.widget) return ocultar();
+    if (pv.contains(e.target)) cancelar(); else { cancelar(); t = setTimeout(ocultar, 450); }
   });
-  document.addEventListener('scroll', function () { actual = null; pv.classList.remove('on'); }, { passive: true });
+  document.addEventListener('scroll', ocultar, { passive: true });
 })();
